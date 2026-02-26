@@ -124,7 +124,7 @@ extension watchOSConnectivity: WCSessionDelegate {
         if isActivated {
             send(message: passData)
         } else {
-            print("⏳ Session not ready. Queuing login status.")
+            print("⏳ Session not ready to iOS. Queuing login status.")
             pendingMessages.append(passData)
         }
     }

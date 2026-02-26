@@ -9,7 +9,7 @@ import SwiftUI
 import WatchConnectivity
 
 struct TesteConnect: View {
-    var position: Positions = .KITCHEN
+    var position: Positions = .ENTRANCE
     var body: some View {
         Button {
             // Sending the message to watch

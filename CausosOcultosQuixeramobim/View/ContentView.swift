@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SpriteKit
+import WatchConnectivity
 
 struct ContentView: View {
     @State var currentScene: Positions = .WINDOW
@@ -44,6 +45,11 @@ struct ContentView: View {
         case .NONE:
             ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
         }
+        Text("")
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
     }
 }
 

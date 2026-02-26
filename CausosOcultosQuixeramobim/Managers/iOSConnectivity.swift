@@ -107,4 +107,13 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
             print("📩 iOS received message: \(message)")
         }
     }
+    
+    /// Handles ApplicationContext updates from iOS
+    func session(_ session: WCSession,
+                 didReceiveApplicationContext applicationContext: [String : Any]) {
+        DispatchQueue.main.async {
+            self.receivedData = applicationContext
+            print("Received application context: \(applicationContext)")
+        }
+    }
 }

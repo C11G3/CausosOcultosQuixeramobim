@@ -11,8 +11,8 @@ import SwiftUI
 struct CausosOcultosQuixeramobimApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-//            TesteConnect()
+//            ContentView()
+            TesteConnect()
         }
     }
 }

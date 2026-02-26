@@ -8,6 +8,8 @@
 import SwiftUI
 import SpriteKit
 
+/// Display the main view
+/// `init:`  Scene initialization out of its array
 struct ContentView: View {
     @State var currentScene: Positions = .WINDOW
     var scenes: [SKScene]

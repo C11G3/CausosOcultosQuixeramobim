@@ -8,6 +8,13 @@
 import SwiftUI
 import SpriteKit
 
+/// ScenePositions shows the current scene and navigation buttons
+/// - Parameter currentScene: Gets the current enum case
+/// - Parameter destinationRight: Changes the enum case of the right arrow button
+/// - Parameter destinationLeft: Changes the enum case of the left arrow button
+/// - Parameter scenes: Receives a SKScene list to display the scene through the SpriteView
+/// - Parameter scenesCloseUp: Receives a SKScene list to display the scene close up through the SpriteView
+/// - Parameter index: Receives the index for accessing the scenes or scenesCloseUp arrays
 struct ScenePositions: View {
     @Binding var currentScene: Positions
     let destinationRight: Positions
@@ -23,9 +30,7 @@ struct ScenePositions: View {
                 .overlay {
                     HStack {
                         ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
-                        
                         Spacer()
-                        
                         ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
                     }
                 }
@@ -35,9 +40,7 @@ struct ScenePositions: View {
                 .overlay {
                     HStack {
                         ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
-                        
                         Spacer()
-                        
                         ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
                     }
                 }

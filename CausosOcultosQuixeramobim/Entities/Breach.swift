@@ -1,0 +1,57 @@
+//
+//  Breach.swift
+//  CausosOcultos
+//
+//  Created by Tamires Mendes da Silva on 23/02/26.
+//
+import SwiftUI
+import Foundation
+import SpriteKit
+
+/**
+ Code Documentation
+ 
+ ## Variables
+ - var actualPosition: variable responsible for storing the breach's position
+ - var barricades:  array that has the barricades of the branch
+ - var barricadeMax: maximum number of barricades that can be added
+ */
+class Breach: SKSpriteNode {
+    var actualPosition: Positions = .NONE
+    private var barricades: [Barricade] = []
+    private var barricadeMax: Int = 4
+    
+    /// Function that assigns damage to the newest Barricade
+    ///
+    /// - Parameters:
+    ///     - damage: Damage to be inserted into the bellies
+    ///
+    func applyDamage(damage: Double) {
+        barricades.last?.applyDamage(damage)
+        if barricades.last?.getHealth() == 0{
+            barricades.removeLast()
+            return
+        }
+    }
+    
+    /// Function that appends a new barricade to the breach while it's not full
+    ///
+    /// - Parameters:
+    ///     - barricade: barricade that will be added
+    ///
+    func addBarricades(barricade :Barricade){
+        if barricades.count < barricadeMax {
+            barricades.append(barricade)
+        }
+    }
+    
+    func getNumOfBarricade() -> Int{
+        return barricades.count
+    }
+    
+    func update(){
+        for i in 0..<barricades.count {
+            barricades[i].decayHealth()
+        }
+    }
+}

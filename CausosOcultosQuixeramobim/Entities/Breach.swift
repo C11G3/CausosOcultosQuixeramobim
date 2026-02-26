@@ -26,7 +26,6 @@ class Breach: SKSpriteNode {
         self.actualPosition = actualPosition
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -51,6 +50,18 @@ class Breach: SKSpriteNode {
     func addBarricades(barricade :Barricade){
         if barricades.count < barricadeMax {
             barricades.append(barricade)
+            addChildBarricades()
+        }
+    }
+    
+    func addChildBarricades() {
+        for i in 0..<barricades.count {
+            if barricades[i].parent == nil {
+                barricades[i].position.x = frame.midX
+                barricades[i].position.y = frame.midY + CGFloat(i)
+                barricades[i].size = CGSize(width: 1, height: 1)
+                addChild(barricades[i])
+            }
         }
     }
     

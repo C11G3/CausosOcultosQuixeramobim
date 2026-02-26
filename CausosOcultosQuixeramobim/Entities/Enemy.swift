@@ -36,7 +36,7 @@ class Enemy: SKSpriteNode {
     private var attackDeltaTime: Double = 10
 
     init() {
-        super.init(texture: SKTexture(imageNamed: "window"), color: UIColor.blue, size: CGSize(width: 1000, height: 1000))
+        super.init(texture: SKTexture(imageNamed: "capelobo"), color: UIColor.blue, size: CGSize(width: 1, height: 1))
     }
     
     required init?(coder aDecoder: NSCoder) {

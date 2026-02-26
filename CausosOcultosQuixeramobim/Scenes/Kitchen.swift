@@ -14,7 +14,8 @@ class Kitchen: SKScene {
     var isZoomed: Bool = false
     
     override func didMove(to view: SKView) {
-        backGround.size = frame.size
+        backGround.size.width = frame.size.width / 2
+        backGround.size.height = frame.size.height / 2
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
         backGround.zPosition = -1

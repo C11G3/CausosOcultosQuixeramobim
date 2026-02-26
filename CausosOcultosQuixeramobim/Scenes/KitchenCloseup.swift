@@ -19,7 +19,11 @@ class KitchenCloseup: SKScene {
         
         if backGround.parent == nil {
             addChild(backGround)
+        }
+        
+        if GameController.sheerd.kitchenWindow.parent == nil {
             addChild(GameController.sheerd.kitchenWindow)
+
         }
         
         if GameController.sheerd.enemy.canAppear(position: .KITCHEN) {
@@ -38,7 +42,8 @@ class KitchenCloseup: SKScene {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        GameController.sheerd.player.buildBarricade(breach: GameController.sheerd.kitchenWindow)
+
     }
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()

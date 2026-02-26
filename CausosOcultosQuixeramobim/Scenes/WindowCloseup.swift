@@ -39,7 +39,7 @@ class WindowCloseup: SKScene {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        GameController.sheerd.player.buildBarricade(breach: GameController.sheerd.window)
     }
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()

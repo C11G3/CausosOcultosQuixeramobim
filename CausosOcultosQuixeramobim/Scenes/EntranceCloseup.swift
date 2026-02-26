@@ -9,7 +9,8 @@ import Foundation
 import SpriteKit
 
 class EntranceCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomRight")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomBack")
+    var wasEnemyHere = false
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -18,7 +19,19 @@ class EntranceCloseup: SKScene {
         
         if backGround.parent == nil {
             addChild(backGround)
+            addChild(GameController.sheerd.door)
+
         }
+        
+        if GameController.sheerd.enemy.canAppear(position: .ENTRANCE) {
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
+        }
+        
+        if GameController.sheerd.door.parent == nil{
+            addChild(GameController.sheerd.door)
+        }
+    
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -34,6 +47,10 @@ class EntranceCloseup: SKScene {
         
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        GameController.sheerd.update()
+        
+        if GameController.sheerd.enemy.getPosition() != GameController.sheerd.door.getPosition() && wasEnemyHere == true{
+            GameController.sheerd.enemy.removeFromParent()
+        }
     }
 }

@@ -9,8 +9,9 @@ import Foundation
 import SpriteKit
 
 class Entrance: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "right")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "back")
     var window: SKSpriteNode = SKSpriteNode(imageNamed: "window")
+
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -23,15 +24,20 @@ class Entrance: SKScene {
         window.position.y = frame.midY
         window.zPosition = 1
         window.name = "janela"
-                
+        
         if backGround.parent == nil {
             addChild(backGround)
             addChild(window)
+
         }
+        
+        
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let locationInScene = touch.location(in: self)
@@ -42,7 +48,8 @@ class Entrance: SKScene {
             SceneManager.shared.isZoomed = true
         }
     }
-    override func update(_ currentTime: TimeInterval) {
     
+    override func update(_ currentTime: TimeInterval) {
+        GameController.sheerd.update()
     }
 }

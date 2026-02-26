@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class ShelfCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomBack")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomRight")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -34,6 +34,6 @@ class ShelfCloseup: SKScene {
         
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        GameController.sheerd.update()
     }
 }

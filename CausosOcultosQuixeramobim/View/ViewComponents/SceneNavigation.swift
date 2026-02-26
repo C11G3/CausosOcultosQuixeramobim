@@ -34,11 +34,11 @@ struct ScenePositions: View {
                 .scaledToFit()
                 .overlay {
                     HStack {
-                        ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
+                        ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
                         
                         Spacer()
                         
-                        ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+                        ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
                     }
                 }
         }

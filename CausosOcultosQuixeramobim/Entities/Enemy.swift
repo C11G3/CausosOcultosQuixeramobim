@@ -31,10 +31,17 @@ class Enemy: SKSpriteNode {
     private var barricadeDamage: Double = 20
     var difficulty: Double = 5
     
-    
+    private var walkTimer: Date = Date.now
     private var attackTimer: Date = Date.now
     private var attackDeltaTime: Double = 10
 
+    init() {
+        super.init(texture: SKTexture(imageNamed: "window"), color: UIColor.blue, size: CGSize(width: 1000, height: 1000))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     /// Function responsible for guiding the enemy's movement through the scenes, if the enemy is not in the attack state.
     private func walk() {
         if actualState != .ATTACKING {
@@ -62,6 +69,7 @@ class Enemy: SKSpriteNode {
                 default: break
                 }
             }
+            print(actualPosition)
         }
     }
     
@@ -91,11 +99,14 @@ class Enemy: SKSpriteNode {
         let now = Date.now
         
         if actualState == .ATTACKING && now.timeIntervalSince(attackTimer) >= attackDeltaTime {
+            attackTimer = Date.now
             breach.applyDamage(damage: barricadeDamage)
+            print("ATAkOU")
         }
         if breach.getNumOfBarricade() == 0 {
             GameController.sheerd.player.isAlive = false
         }
+       
     }
     
     /// Function that applies effects to the enemy.
@@ -119,12 +130,25 @@ class Enemy: SKSpriteNode {
     func getPosition() -> Positions{
         return actualPosition
     }
+    
     func getState() -> EnemyStates{
         return actualState
     }
     
+    func canAppear(position: Positions) -> Bool {
+        if actualPosition == position && actualState == .ATTACKING && self.parent == nil {
+            return true
+        }
+        return false
+    }    
+    
     func update(){
-        walk()
+        let now = Date.now
+        
+        if now.timeIntervalSince(walkTimer) > 3{
+            walk()
+            walkTimer = Date.now
+        }
         if actualState == .ATTACKING {
             switch actualPosition {
             case .WINDOW:

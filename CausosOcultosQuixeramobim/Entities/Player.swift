@@ -44,7 +44,7 @@ class Player: SKSpriteNode {
     /// Function responsible for adding a barricade to the breach.
     func buildBarricade(breach: Breach){
 //        SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
-        if breach.actualPosition == actualPosition {
+        if breach.getPosition() == actualPosition {
             let barricade = Barricade()
             breach.addBarricades(barricade: barricade)
         }

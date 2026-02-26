@@ -17,10 +17,19 @@ import SpriteKit
  - var barricadeMax: maximum number of barricades that can be added
  */
 class Breach: SKSpriteNode {
-    var actualPosition: Positions = .NONE
+    private var actualPosition: Positions = .NONE
     private var barricades: [Barricade] = []
     private var barricadeMax: Int = 4
     
+    init(texture: SKTexture?, actualPosition: Positions, size: CGSize = CGSize(width: 100, height: 65)) {
+        super.init(texture: texture, color: UIColor.black, size: size)
+        self.actualPosition = actualPosition
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     /// Function that assigns damage to the newest Barricade
     ///
     /// - Parameters:
@@ -49,6 +58,9 @@ class Breach: SKSpriteNode {
         return barricades.count
     }
     
+    func getPosition() -> Positions{
+        return actualPosition
+    }
     func update(){
         for i in 0..<barricades.count {
             barricades[i].decayHealth()

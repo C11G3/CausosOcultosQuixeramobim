@@ -16,6 +16,7 @@ struct ArrowButton: View {
         VStack{
             Button {
                 sceneState = destination
+                SceneManager.shared.isZoomed = false
             } label: {
                 ZStack {
                     Circle()

@@ -12,18 +12,19 @@ import SpriteKit
 class GameController {
     public static var sheerd = GameController.init()
     
-    private init(){
-        window.actualPosition = .WINDOW
-        kitchenWindow.actualPosition = .KITCHEN
-        door.actualPosition = .ENTRANCE
-    }
-    
     var enemy = Enemy()
     var player = Player()
     
-    var window = Breach()
-    var kitchenWindow = Breach()
-    var door = Breach()
+    var window = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .WINDOW)
+    var kitchenWindow = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .KITCHEN)
+    var door = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .ENTRANCE)
+    
+    func canAppear(position: Positions) -> Bool {
+        if enemy.getPosition() == position && enemy.getState() == .ATTACKING && enemy.parent == nil {
+            return true
+        }
+        return false
+    }
     
     func update(){
         enemy.update()
@@ -31,5 +32,4 @@ class GameController {
         kitchenWindow.update()
         door.update()
     }
-    
 }

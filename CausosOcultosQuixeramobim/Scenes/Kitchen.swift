@@ -29,6 +29,10 @@ class Kitchen: SKScene {
             addChild(backGround)
             addChild(window)
         }
+        
+        if GameController.sheerd.kitchenWindow.parent == nil{
+            addChild(GameController.sheerd.kitchenWindow)
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -44,6 +48,6 @@ class Kitchen: SKScene {
         }
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        GameController.sheerd.update()
     }
 }

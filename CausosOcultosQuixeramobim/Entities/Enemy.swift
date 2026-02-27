@@ -24,8 +24,8 @@ import SpriteKit
  */
 class Enemy: SKSpriteNode {
     
-    var actualState: EnemyStates = .IDLE
-    private var actualPosition: Positions = .NONE
+    private var actualState: EnemyStates = .IDLE
+    public var actualPosition: Positions = .NONE
     
     private var health: Double = 3
     private var barricadeDamage: Double = 20
@@ -87,6 +87,33 @@ class Enemy: SKSpriteNode {
             actualPosition = position2
         } else {
             actualState = .ATTACKING
+        }
+    }
+    
+    private func stringToPosition(position: [String: String]) -> Positions {
+        switch position {
+        case ["": "KITCHEN"]:
+            return .KITCHEN
+        case ["": "ENTRANCE"]:
+            return .ENTRANCE
+        case ["": "SHELF"]:
+            return .SHELF
+        case ["": "WINDOW"]:
+            return .WINDOW
+        default:
+            return .NONE
+        }
+    }
+    
+    /// Auxiliary Function that randomly determines the enemy's future position, with the highest probability of causing the enemy to attack.
+    ///
+    /// - Parameters:
+    ///     - position: Likely future position of the enemy
+    func baitPosition(baitPosition: [String: String]) {
+        let rand = Int.random(in: 0...99)
+        let currentPosition: Positions = stringToPosition(position: baitPosition)
+        if rand < 80 {
+            self.actualPosition = currentPosition
         }
     }
     

@@ -11,7 +11,8 @@ import SpriteKit
 /// Scene with background and clicable object that allows zooming
 /// - Parameter background: SKSpriteNode of background image
 class EntranceCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomRight")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomBack")
+    var wasEnemyHere = false
     
     // Creates the objects
     override func didMove(to view: SKView) {
@@ -21,24 +22,34 @@ class EntranceCloseup: SKScene {
         
         if backGround.parent == nil {
             addChild(backGround)
+            addChild(GameController.sheerd.door)
+
         }
+        
+        if GameController.sheerd.enemy.canAppear(position: .ENTRANCE) {
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
+        }
+        
+        if GameController.sheerd.door.parent == nil{
+            addChild(GameController.sheerd.door)
+        }
+    
     }
     
     // Check if the object is being touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        let locationInScene = touch.location(in: self)
-        
-        let touchedNodes = nodes(at: locationInScene)
-        
-        if touchedNodes.first != nil {
-            SceneManager.shared.isZoomed = false
-        }
+
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        GameController.sheerd.player.buildBarricade(breach: GameController.sheerd.door)
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        GameController.sheerd.update()
+        
+        if GameController.sheerd.enemy.getPosition() != GameController.sheerd.door.getPosition() && wasEnemyHere == true{
+            GameController.sheerd.enemy.removeFromParent()
+        }
     }
 }

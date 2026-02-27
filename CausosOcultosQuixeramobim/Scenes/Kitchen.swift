@@ -18,7 +18,8 @@ class Kitchen: SKScene {
     
     // Creates the objects
     override func didMove(to view: SKView) {
-        backGround.size = frame.size
+        backGround.size.width = frame.size.width / 2
+        backGround.size.height = frame.size.height / 2
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
         backGround.zPosition = -1
@@ -32,6 +33,10 @@ class Kitchen: SKScene {
         if backGround.parent == nil {
             addChild(backGround)
             addChild(window)
+        }
+        
+        if GameController.sheerd.kitchenWindow.parent == nil{
+            addChild(GameController.sheerd.kitchenWindow)
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,6 +55,6 @@ class Kitchen: SKScene {
         }
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        GameController.sheerd.update()
     }
 }

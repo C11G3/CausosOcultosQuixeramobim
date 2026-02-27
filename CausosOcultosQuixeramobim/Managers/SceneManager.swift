@@ -15,6 +15,8 @@ import SwiftUI
 class SceneManager {
     public var isZoomed: Bool = false
     
+    public var isPlayerAlive: Bool = true
+    
     static var shared : SceneManager = {
         let instance = SceneManager()
         return instance

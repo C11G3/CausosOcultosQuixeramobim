@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 /**
  Code Documentation
@@ -21,7 +22,7 @@ import SpriteKit
  */
 class Player: SKSpriteNode {
     
-    private var actualPosition : Positions = .WINDOW
+    @State var actualPosition : Positions = .WINDOW
     var isAlive : Bool = true
     var knowledge : Bool = false
     var barricadeCooldown : Double = 2
@@ -44,10 +45,9 @@ class Player: SKSpriteNode {
     /// Function responsible for adding a barricade to the breach.
     func buildBarricade(breach: Breach){
 //        SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
-        if breach.actualPosition == actualPosition {
-            let barricade = Barricade()
+            let barricade = Barricade(color: UIColor.blue, size: CGSize(width: 0.01, height: 0.01))
             breach.addBarricades(barricade: barricade)
-        }
+            print(breach.getNumOfBarricade())
     }
     
     /// Function responsible to set the knowledge of the enemy's weakness

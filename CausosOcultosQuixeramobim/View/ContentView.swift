@@ -64,6 +64,9 @@ struct ContentView: View {
                 baitMonsterPosition = data as? [String : String]
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
+            .onDisappear() {
+                print("tchau :)")
+            }
     }
 }
 

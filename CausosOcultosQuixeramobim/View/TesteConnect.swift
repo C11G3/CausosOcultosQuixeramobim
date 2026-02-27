@@ -8,6 +8,7 @@
 import SwiftUI
 import WatchConnectivity
 
+/// View to test the connection between iOS and watchOS.
 struct TesteConnect: View {
     @State var currentMonsterPosition : [String:String]? = ["": "NONE"]
     var position: Positions = .ENTRANCE

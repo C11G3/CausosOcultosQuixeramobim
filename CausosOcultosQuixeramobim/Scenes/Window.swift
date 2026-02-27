@@ -55,5 +55,5 @@ class Window: SKScene {
 }
 
 #Preview {
-    ContentView()
+    GameView()
 }

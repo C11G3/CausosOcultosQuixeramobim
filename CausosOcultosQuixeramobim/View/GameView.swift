@@ -11,7 +11,7 @@ import WatchConnectivity
 
 /// Display the main view
 /// `init:`  Scene initialization out of its array
-struct ContentView: View {
+struct GameView: View {
     @State var currentScene: Positions = .WINDOW
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
@@ -56,5 +56,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    GameView()
 }

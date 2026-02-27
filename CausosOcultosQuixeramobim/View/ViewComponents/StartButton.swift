@@ -13,7 +13,7 @@ struct StartButton: View {
     var body: some View {
         if fontType == "RubikDirt" {
             NavigationLink {
-                ContentView()
+                GameView()
             } label: {
                 Text("Jogar")
                     .foregroundColor(.black)

@@ -9,7 +9,8 @@ import SwiftUI
 import WatchConnectivity
 
 struct TesteConnect: View {
-    var position: Positions = .KITCHEN
+    @State var currentMonsterPosition : [String:String]? = ["": "NONE"]
+    var position: Positions = .ENTRANCE
     var body: some View {
         Button {
             // Sending the message to watch
@@ -18,10 +19,17 @@ struct TesteConnect: View {
             Circle()
                 .frame(width: 200)
         }
+        Text("Recieved message: \(currentMonsterPosition ?? [ "" : "NONE"])")
+
+        
         .onAppear() {
             // Activating the WCSession
             iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
         }
+        .onReceive(iOSConnectivity.shared.$receivedData) { data in
+            currentMonsterPosition = data as? [String : String]
+        }
+        
     }
 
 }

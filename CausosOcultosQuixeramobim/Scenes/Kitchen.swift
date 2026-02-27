@@ -8,11 +8,15 @@
 import Foundation
 import SpriteKit
 
+/// Scene with background and clicable object that allows zooming
+/// - Parameter background: SKSpriteNode of background image
+/// - Parameter window: SKSpriteNode of window image
 class Kitchen: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "left")
     var window: SKSpriteNode = SKSpriteNode(imageNamed: "window")
     var isZoomed: Bool = false
     
+    // Creates the objects
     override func didMove(to view: SKView) {
         backGround.size.width = frame.size.width / 2
         backGround.size.height = frame.size.height / 2
@@ -38,6 +42,8 @@ class Kitchen: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
+    
+    // Check if the object is being touched
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let locationInScene = touch.location(in: self)

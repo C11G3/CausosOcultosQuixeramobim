@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Arrow button that allows user to move through the scenes
+/// - Parameter sceneState: Gets the current enum case
+/// - Parameter symbolDirection: Decides if its right (false) and left (true)
+/// - Parameter destination: Changes the enum case
 struct ArrowButton: View {
     @Binding var sceneState: Positions
     var symbolDirection: Bool

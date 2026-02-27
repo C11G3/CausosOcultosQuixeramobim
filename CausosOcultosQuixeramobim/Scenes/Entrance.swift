@@ -8,11 +8,13 @@
 import Foundation
 import SpriteKit
 
+/// Scene with background and clicable object that allows zooming
+/// - Parameter background: SKSpriteNode of background image
+/// - Parameter window: SKSpriteNode of window image
 class Entrance: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "back")
     var window: SKSpriteNode = SKSpriteNode(imageNamed: "window")
 
-    
     override func didMove(to view: SKView) {
         backGround.size.width = frame.size.width / 2
         backGround.size.height = frame.size.height / 2
@@ -39,6 +41,8 @@ class Entrance: SKScene {
         
     }
     
+
+    // Check if the object is being touched
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let locationInScene = touch.location(in: self)
@@ -49,7 +53,7 @@ class Entrance: SKScene {
             SceneManager.shared.isZoomed = true
         }
     }
-    
+
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()
     }

@@ -19,6 +19,7 @@ enum ValidationError: Error {
     case unknown
 }
 
+/// Player and Enemy enum
 enum Positions: String {
     case WINDOW
     case SHELF

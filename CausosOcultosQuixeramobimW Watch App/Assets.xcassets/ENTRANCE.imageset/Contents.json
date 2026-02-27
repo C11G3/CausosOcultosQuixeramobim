@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ENTRANCE.jpg",
+      "filename" : "watchFrontDoor.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ENTRANCE 1.jpg",
+      "filename" : "watchFrontDoor 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ENTRANCE 2.jpg",
+      "filename" : "watchFrontDoor 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

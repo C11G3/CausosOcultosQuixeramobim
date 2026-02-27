@@ -7,8 +7,11 @@
 
 import SwiftUI
 import SpriteKit
+import WatchConnectivity
 
-struct ContentView: View {
+/// Display the main view
+/// `init:`  Scene initialization out of its array
+struct GameView: View {
     @State var currentScene: Positions = .WINDOW
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
@@ -49,9 +52,14 @@ struct ContentView: View {
         else{
             GameOverView()
         }
+        Text("")
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
     }
 }
 
 #Preview {
-    ContentView()
+    GameView()
 }

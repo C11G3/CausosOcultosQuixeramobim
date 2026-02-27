@@ -14,6 +14,7 @@ internal import Combine
 /// - Parameter receivedData: Var that stores last received data
 /// - Parameter receivedNotification: Var Stores last received push notification
 /// - Parameter session: Var thar creates the sesison between the iOS and the watchOS
+/// - Parameter shared: Singleton
 class watchOSConnectivity: NSObject, ObservableObject {
     @Published var receivedData: [String: Any] = [:]         // Stores last received data
     
@@ -77,10 +78,12 @@ extension watchOSConnectivity: WCSessionDelegate {
         }
     }
     
+    ///  Shows if the session became inactive
     func sessionBecomeInactive(_ session: WCSession) {
         print("Session became inactive")
     }
     
+    ///  Shows if the session deactivate
     func sessionDeactivate(_ session: WCSession) {
         print("Session deactivated. Re-activating...")
         session.activate()
@@ -103,13 +106,14 @@ extension watchOSConnectivity: WCSessionDelegate {
         }
     }
     
+    /// verifies if the session is rechable and ensures message is delivered later if watch is unreachable
     private func send(message: [String: Any]) {
         if session.isReachable {
             session.sendMessage(message, replyHandler: nil) { error in
                 print("Failed to send message: \(error.localizedDescription)")
             }
-        } else {
-            // Application Context ensures message is delivered later if watch is unreachable
+        }
+        else {
             do {
                 try session.updateApplicationContext(message)
                 print("Sent via Application Context (iOS not reachable)")

@@ -8,12 +8,14 @@
 import SwiftUI
 import WatchConnectivity
 
+/// View to test the connection between iOS and watchOS.
 struct TesteConnect: View {
     @State var currentMonsterPosition : [String:String]? = ["": "NONE"]
     var position: Positions = .ENTRANCE
     var body: some View {
         Button {
             // Sending the message to watch
+            
             iOSConnectivity.shared.sendToWatch(passData: ["" : position.rawValue])
         } label: {
             Circle()

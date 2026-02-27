@@ -14,6 +14,7 @@ import WatchConnectivity
 struct ContentView: View {
     @State var currentScene: Positions = .WINDOW
     @State var monsterPosition: Positions?
+    @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
     
@@ -57,7 +58,11 @@ struct ContentView: View {
             .onChange(of: GameController.sheerd.enemy.actualPosition) {
                 monsterPosition = GameController.sheerd.enemy.getPosition()
                 iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
-                print(monsterPosition)
+                print(monsterPosition!)
+            }
+            .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                baitMonsterPosition = data as? [String : String]
+                print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
     }
 }

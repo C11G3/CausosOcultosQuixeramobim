@@ -90,6 +90,33 @@ class Enemy: SKSpriteNode {
         }
     }
     
+    private func stringToPosition(position: [String: String]) -> Positions {
+        switch position {
+        case ["": "KITCHEN"]:
+            return .KITCHEN
+        case ["": "ENTRANCE"]:
+            return .ENTRANCE
+        case ["": "SHELF"]:
+            return .SHELF
+        case ["": "WINDOW"]:
+            return .WINDOW
+        default:
+            return .NONE
+        }
+    }
+    
+    /// Auxiliary Function that randomly determines the enemy's future position, with the highest probability of causing the enemy to attack.
+    ///
+    /// - Parameters:
+    ///     - position: Likely future position of the enemy
+    func baitPosition(baitPosition: [String: String]) {
+        let rand = Int.random(in: 0...99)
+        let currentPosition: Positions = stringToPosition(position: baitPosition)
+        if rand < 80 {
+            self.actualPosition = currentPosition
+        }
+    }
+    
     /// Function that receives the breach to be attacked and performs an attack at regular intervals.
     ///
     /// - Parameters:

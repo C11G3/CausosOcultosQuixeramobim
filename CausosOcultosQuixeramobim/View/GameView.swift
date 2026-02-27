@@ -67,10 +67,8 @@ struct GameView: View {
             }
             .onReceive(iOSConnectivity.shared.$receivedData) { data in
                 baitMonsterPosition = data as? [String : String]
+                GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
-            }
-            .onDisappear() {
-                print("tchau :)")
             }
     }
 }

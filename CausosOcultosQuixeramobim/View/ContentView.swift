@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SpriteKit
+import WatchConnectivity
 
 /// Display the main view
 /// `init:`  Scene initialization out of its array
@@ -46,6 +47,11 @@ struct ContentView: View {
         case .NONE:
             ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
         }
+        Text("")
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
     }
 }
 

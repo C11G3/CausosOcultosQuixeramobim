@@ -14,8 +14,9 @@ import SpriteKit
 class Entrance: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "right")
     var window: SKSpriteNode = SKSpriteNode(imageNamed: "window")
-    
-    // Creates the objects
+    var positions : Positions = .NONE
+
+        
     override func didMove(to view: SKView) {
         backGround.size = frame.size
         backGround.position.x = frame.midX
@@ -27,7 +28,7 @@ class Entrance: SKScene {
         window.position.y = frame.midY
         window.zPosition = 1
         window.name = "janela"
-                
+        
         if backGround.parent == nil {
             addChild(backGround)
             addChild(window)
@@ -49,6 +50,8 @@ class Entrance: SKScene {
         }
     }
     override func update(_ currentTime: TimeInterval) {
-    
+        iOSConnectivity.shared.sendToWatch(passData: ["" : positions.rawValue])
+        positions = GameController.sheerd.enemy.getPosition()
+        print(positions)
     }
 }

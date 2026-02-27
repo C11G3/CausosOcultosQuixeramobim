@@ -27,8 +27,8 @@ struct CameraView: View {
                 Spacer()
                 Button {
                     print(scene)
-                    watchOSConnectivity.shared.sendToiOS(passData: ["" : scene])
-
+                    watchOSConnectivity.shared.sendApplicationContext(data: ["" : scene])
+                    
                 } label: {
                     Text("Attract")
                 }

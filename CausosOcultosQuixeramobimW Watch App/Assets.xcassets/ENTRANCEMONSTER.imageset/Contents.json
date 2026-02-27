@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ENTRANCEMONSTER.jpeg",
+      "filename" : "CapeloboWatchFrontDoor.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ENTRANCEMONSTER 1.jpeg",
+      "filename" : "CapeloboWatchFrontDoor 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ENTRANCEMONSTER 2.jpeg",
+      "filename" : "CapeloboWatchFrontDoor 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

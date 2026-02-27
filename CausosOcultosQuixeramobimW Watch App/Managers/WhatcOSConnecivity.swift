@@ -112,7 +112,7 @@ extension watchOSConnectivity: WCSessionDelegate {
             // Application Context ensures message is delivered later if watch is unreachable
             do {
                 try session.updateApplicationContext(message)
-                print("Sent via Application Context (watch not reachable)")
+                print("Sent via Application Context (iOS not reachable)")
             } catch {
                 print("Failed to send via Application Context: \(error.localizedDescription)")
             }
@@ -124,7 +124,7 @@ extension watchOSConnectivity: WCSessionDelegate {
         if isActivated {
             send(message: passData)
         } else {
-            print("⏳ Session not ready. Queuing login status.")
+            print("⏳ Session not ready to iOS. Queuing login status.")
             pendingMessages.append(passData)
         }
     }

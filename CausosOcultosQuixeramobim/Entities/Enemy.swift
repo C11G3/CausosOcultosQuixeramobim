@@ -25,7 +25,7 @@ import SpriteKit
 class Enemy: SKSpriteNode {
     
     private var actualState: EnemyStates = .IDLE
-    private var actualPosition: Positions = .NONE
+    public var actualPosition: Positions = .NONE
     
     private var health: Double = 3
     private var barricadeDamage: Double = 20

@@ -13,8 +13,10 @@ import WatchConnectivity
 /// `init:`  Scene initialization out of its array
 struct ContentView: View {
     @State var currentScene: Positions = .WINDOW
+    @State var monsterPosition: Positions?
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
+    
     
     init() {
         let tempScenes:  [SKScene] = [Window(), Entrance(), Kitchen(), Shelf()]
@@ -51,6 +53,11 @@ struct ContentView: View {
             .onAppear() {
                 // Activating the WCSession
                 iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
+            .onChange(of: GameController.sheerd.enemy.actualPosition) {
+                monsterPosition = GameController.sheerd.enemy.getPosition()
+                iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
+                print(monsterPosition)
             }
     }
 }

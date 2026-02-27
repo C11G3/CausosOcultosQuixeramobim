@@ -14,6 +14,7 @@ struct TesteConnect: View {
     var body: some View {
         Button {
             // Sending the message to watch
+            
             iOSConnectivity.shared.sendToWatch(passData: ["" : position.rawValue])
         } label: {
             Circle()

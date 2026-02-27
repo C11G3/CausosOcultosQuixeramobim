@@ -14,6 +14,7 @@ struct CameraView: View {
     var scene: String
     var width = WKInterfaceDevice.current().screenBounds.width
     var height = WKInterfaceDevice.current().screenBounds.height
+    var monsterPositoon: String
     
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct CameraView: View {
                 Spacer()
                 Button {
                     print(scene)
-                    watchOSConnectivity.shared.sendApplicationContext(data: ["" : scene])
+                    watchOSConnectivity.shared.sendApplicationContext(data: ["" : monsterPositoon])
                     
                 } label: {
                     Text("Attract")
@@ -43,5 +44,5 @@ struct CameraView: View {
 }
 
 #Preview {
-    CameraView(scene: "scene")
+    CameraView(scene: "scene", monsterPositoon: "Entrance")
 }

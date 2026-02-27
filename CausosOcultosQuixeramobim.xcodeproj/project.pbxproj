@@ -43,6 +43,7 @@
 		E18F46C92F50DAFC0020DC59 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobimW Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Models/Fonts.swift,
 				Resources/RubikDirt.ttf,
 				Resources/RubikDoodleShadow.ttf,
 			);

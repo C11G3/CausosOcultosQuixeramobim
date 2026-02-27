@@ -16,13 +16,13 @@ struct WatchView: View {
     
     var body: some View {
         TabView(selection: $scrollAmount) {
-            CameraView(scene: currentMonsterPosition == ["" : "ENTRANCE"] ? "ENTRANCEMONSTER" : "ENTRANCE")
+            CameraView(scene: currentMonsterPosition == ["" : "ENTRANCE"] ? "ENTRANCEMONSTER" : "ENTRANCE", monsterPositoon: "ENTRANCE")
                 .tag(0)
-            CameraView(scene: currentMonsterPosition == ["" : "WINDOW"] ? "WINDOWMONSTER" : "WINDOW")
+            CameraView(scene: currentMonsterPosition == ["" : "WINDOW"] ? "WINDOWMONSTER" : "WINDOW", monsterPositoon: "WINDOW")
                 .tag(1)
-            CameraView(scene: currentMonsterPosition == ["" : "SHELF"] ? "SHELFMONSTER" : "SHELF")
+            CameraView(scene: currentMonsterPosition == ["" : "SHELF"] ? "SHELFMONSTER" : "SHELF", monsterPositoon: "SHELF")
                 .tag(2)
-            CameraView(scene: currentMonsterPosition == ["" : "KITCHEN"] ? "KITCHENMONSTER" : "KITCHEN")
+            CameraView(scene: currentMonsterPosition == ["" : "KITCHEN"] ? "KITCHENMONSTER" : "KITCHEN", monsterPositoon: "KITCHEN")
                 .tag(3)
         }
         .tabViewStyle(.carousel)

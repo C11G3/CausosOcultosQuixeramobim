@@ -18,7 +18,6 @@ struct GameView: View {
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
     
-    
     init() {
         let tempScenes:  [SKScene] = [Window(), Entrance(), Kitchen(), Shelf()]
         for i in tempScenes {
@@ -34,7 +33,7 @@ struct GameView: View {
     }
     
     var body: some View {
-        if SceneManager.shared.isPlayerAlive == true {
+        if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer > 0 {
             switch currentScene {
             case .WINDOW:
                 ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
@@ -51,14 +50,17 @@ struct GameView: View {
             case .NONE:
                 ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
             }
-        }
-        else{
+        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
+            TesteConnect()
+            
+        } else {
             GameOverView()
         }
         Text("")
             .onAppear() {
                 // Activating the WCSession
                 iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+                GameController.sheerd.startTimer()
             }
             .onChange(of: GameController.sheerd.enemy.actualPosition) {
                 monsterPosition = GameController.sheerd.enemy.getPosition()

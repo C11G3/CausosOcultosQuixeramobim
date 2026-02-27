@@ -60,9 +60,9 @@ class Breach: SKSpriteNode {
     func addChildBarricades() {
         for i in 0..<barricades.count {
             if barricades[i].parent == nil {
-                barricades[i].position.x = frame.midX
-                barricades[i].position.y = frame.midY + CGFloat(i)
-                barricades[i].size = CGSize(width: 1, height: 1)
+                barricades[i].position.x = frame.midX / 2
+                barricades[i].position.y = frame.minY + CGFloat(i)
+                barricades[i].size = CGSize(width: 0.1, height: 0.1)
                 addChild(barricades[i])
             }
         }

@@ -12,29 +12,17 @@ import SpriteKit
 /// - Parameter background: SKSpriteNode of background image
 /// - Parameter window: SKSpriteNode of window image
 class Entrance: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "back")
-    var window: SKSpriteNode = SKSpriteNode(imageNamed: "window")
-
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "windowRoom")
+    
     override func didMove(to view: SKView) {
-        backGround.size.width = frame.size.width / 2
-        backGround.size.height = frame.size.height / 2
+        backGround.size = frame.size
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
         backGround.zPosition = -1
         
-        window.size = CGSize(width: 0.5, height: 0.5)
-        window.position.x = frame.midX
-        window.position.y = frame.midY
-        window.zPosition = 1
-        window.name = "janela"
-        
         if backGround.parent == nil {
             addChild(backGround)
-            addChild(window)
-
         }
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,12 +37,14 @@ class Entrance: SKScene {
         
         let touchedNodes = nodes(at: locationInScene)
         
-        if let firstNode = touchedNodes.first, firstNode.name == "janela" {
-            SceneManager.shared.isZoomed = true
-        }
+        SceneManager.shared.isZoomed = true
     }
 
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()
+    }
+    
+    func setSize(width: Int, height: Int){
+        self.size = CGSize(width: width, height: height)
     }
 }

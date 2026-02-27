@@ -11,7 +11,7 @@ import SpriteKit
 /// Scene with background and clicable object that allows zooming
 /// - Parameter background: SKSpriteNode of background image
 class KitchenCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomLeft")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomedWindowRoom")
     var wasEnemyHere = false
 
     // Creates the objects
@@ -21,8 +21,11 @@ class KitchenCloseup: SKScene {
         backGround.position.y = frame.midY
         
         if GameController.sheerd.kitchenWindow.parent == nil {
+            GameController.sheerd.kitchenWindow.position.y = frame.midY
+            GameController.sheerd.kitchenWindow.position.x = frame.midX
+            GameController.sheerd.kitchenWindow.size = CGSize(width: 0.8, height: 0.8)
             addChild(GameController.sheerd.kitchenWindow)
-
+            wasEnemyHere = true
         }
         
         if backGround.parent == nil {

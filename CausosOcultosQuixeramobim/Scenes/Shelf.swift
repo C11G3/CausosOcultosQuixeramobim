@@ -12,7 +12,7 @@ import SpriteKit
 /// - Parameter background: SKSpriteNode of background image
 /// - Parameter window: SKSpriteNode of window image
 class Shelf: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "right")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "shelf")
     
     // Creates the objects
     override func didMove(to view: SKView) {

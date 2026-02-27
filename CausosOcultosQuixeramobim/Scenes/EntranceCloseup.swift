@@ -11,7 +11,7 @@ import SpriteKit
 /// Scene with background and clicable object that allows zooming
 /// - Parameter background: SKSpriteNode of background image
 class EntranceCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomBack")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomedWindowRoom")
     var wasEnemyHere = false
     
     // Creates the objects
@@ -22,8 +22,6 @@ class EntranceCloseup: SKScene {
         
         if backGround.parent == nil {
             addChild(backGround)
-            addChild(GameController.sheerd.door)
-
         }
         
         if GameController.sheerd.enemy.canAppear(position: .ENTRANCE) {
@@ -32,9 +30,12 @@ class EntranceCloseup: SKScene {
         }
         
         if GameController.sheerd.door.parent == nil{
+            GameController.sheerd.door.position.y = frame.midY
+            GameController.sheerd.door.position.x = frame.midX
+            GameController.sheerd.door.size = CGSize(width: 0.8, height: 0.8)
+            
             addChild(GameController.sheerd.door)
         }
-    
     }
     
     // Check if the object is being touched

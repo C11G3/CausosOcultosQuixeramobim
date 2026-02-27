@@ -33,7 +33,7 @@ class Enemy: SKSpriteNode {
     
     private var walkTimer: Date = Date.now
     private var attackTimer: Date = Date.now
-    private var attackDeltaTime: Double = 1
+    private var attackDeltaTime: Double = 10
 
     init() {
         super.init(texture: SKTexture(imageNamed: "capelobo"), color: UIColor.blue, size: CGSize(width: 1, height: 1))

@@ -18,19 +18,39 @@ struct ScenePositions: View {
     
     var body: some View {
         if SceneManager.shared.isZoomed {
-            SpriteView(scene: scenesCloseUp[index])
-                .scaledToFit()
-                .overlay {
-                    HStack {
-                        ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
-                        
-                        Spacer()
-                        
-                        ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+            ZStack{
+                SpriteView(scene: scenesCloseUp[index])
+                    .onAppear{
+                        scenesCloseUp[index].scaleMode = .fill
                     }
+                    .scaledToFit()
+                    .overlay {
+                        HStack {
+                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
+                            
+                            Spacer()
+                            
+                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+                        }
+                    }
+                VStack{
+                    HStack{
+                        Button {
+                            SceneManager.shared.isZoomed = false
+                        } label: {
+                            Text("back")
+                        }
+                        Spacer()
+                    }
+                    Spacer()
                 }
+
+            }
         } else {
             SpriteView(scene: scenes[index])
+                .onAppear{
+                    scenes[index].scaleMode = .fill
+                }
                 .scaledToFit()
                 .overlay {
                     HStack {

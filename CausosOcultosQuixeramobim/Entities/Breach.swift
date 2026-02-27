@@ -37,6 +37,7 @@ class Breach: SKSpriteNode {
     func applyDamage(damage: Double) {
         barricades.last?.applyDamage(damage)
         if barricades.last?.getHealth() == 0{
+            barricades.last?.removeFromParent() 
             barricades.removeLast()
             return
         }

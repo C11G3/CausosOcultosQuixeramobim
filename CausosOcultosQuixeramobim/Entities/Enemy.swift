@@ -24,7 +24,7 @@ import SpriteKit
  */
 class Enemy: SKSpriteNode {
     
-    private var actualState: EnemyStates = .IDLE
+    var actualState: EnemyStates = .IDLE
     private var actualPosition: Positions = .NONE
     
     private var health: Double = 3
@@ -33,7 +33,7 @@ class Enemy: SKSpriteNode {
     
     private var walkTimer: Date = Date.now
     private var attackTimer: Date = Date.now
-    private var attackDeltaTime: Double = 10
+    private var attackDeltaTime: Double = 1
 
     init() {
         super.init(texture: SKTexture(imageNamed: "capelobo"), color: UIColor.blue, size: CGSize(width: 1, height: 1))
@@ -104,7 +104,8 @@ class Enemy: SKSpriteNode {
             print("ATAkOU")
         }
         if breach.getNumOfBarricade() == 0 {
-            GameController.sheerd.player.isAlive = false
+            SceneManager.shared.isPlayerAlive = false
+
         }
        
     }

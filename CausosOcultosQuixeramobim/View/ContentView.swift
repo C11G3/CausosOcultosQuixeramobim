@@ -28,21 +28,26 @@ struct ContentView: View {
     }
     
     var body: some View {
-        switch currentScene {
-        case .WINDOW:
-            ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
-            
-        case .ENTRANCE:
-            ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
-            
-        case .KITCHEN:
-            ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
-            
-        case .SHELF:
-            ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
-            
-        case .NONE:
-            ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+        if SceneManager.shared.isPlayerAlive == true {
+            switch currentScene {
+            case .WINDOW:
+                ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
+                
+            case .ENTRANCE:
+                ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
+                
+            case .KITCHEN:
+                ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
+                
+            case .SHELF:
+                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+                
+            case .NONE:
+                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+            }
+        }
+        else{
+            GameOverView()
         }
     }
 }

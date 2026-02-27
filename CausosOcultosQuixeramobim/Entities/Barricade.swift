@@ -18,10 +18,18 @@ import SpriteKit
 
  */
 class Barricade: SKSpriteNode {
-    private var health: Double = 200
+    private var health: Double = 20
     private var timer = Date.now
     private var deltaTimer: Double = 3
     private var autoDamage: Double = 5
+    
+//    override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+//        super.init(texture: texture, color: color, size: size)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     /// Function that reduces the barricade health as time passes.
     ///

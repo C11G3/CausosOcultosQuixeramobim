@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct MenuView: View {
-    
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Causos Ocultos")
                     .foregroundStyle(.white)
                     .font(.RubikDirt(fontStyle: .title))
-                    .frame(width: UIScreen.main.bounds.width * 0.2)
+                    .frame(width: UIScreen.main.bounds.width * 0.3)
                 
                 Text("Quixeramobim")
                     .foregroundStyle(.white)
                     .font(.RubikDirt(fontStyle: .title2))
                     .padding(.bottom, 20)
                 
-                StartButton(fontType: "RubikDirt")
-                StartButton(fontType: "")
+                GenericButtonRubikDirt(destination: {GameView()},  text: "Jogar")
+                GenericButtonRubikDoodle(destination: {TesteConnect()}, text: "Sobre o Jogo")
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)

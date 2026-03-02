@@ -49,6 +49,7 @@
 				Entities/Player.swift,
 				Managers/GameController.swift,
 				Managers/SceneManager.swift,
+				Managers/SoundManager.swift,
 				Models/Enums.swift,
 				Models/Fonts.swift,
 				Resources/RubikDirt.ttf,

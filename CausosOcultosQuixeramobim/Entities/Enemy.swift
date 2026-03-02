@@ -34,7 +34,7 @@ class Enemy: SKSpriteNode {
     private var walkTimer: Date = Date.now
     private var attackTimer: Date = Date.now
     private var attackDeltaTime: Double = 10
-
+    
     init() {
         super.init(texture: SKTexture(imageNamed: "capelobo"), color: UIColor.blue, size: CGSize(width: 1, height: 1))
     }
@@ -110,11 +110,9 @@ class Enemy: SKSpriteNode {
     /// - Parameters:
     ///     - position: Likely future position of the enemy
     func baitPosition(baitPosition: [String: String]) {
-        let rand = Int.random(in: 0...99)
+//        let rand = Int.random(in: 0...99)
         let currentPosition: Positions = stringToPosition(position: baitPosition)
-        if rand < 80 {
-            self.actualPosition = currentPosition
-        }
+        self.actualPosition = currentPosition
     }
     
     /// Function that receives the breach to be attacked and performs an attack at regular intervals.
@@ -132,9 +130,9 @@ class Enemy: SKSpriteNode {
         }
         if breach.getNumOfBarricade() == 0 {
             SceneManager.shared.isPlayerAlive = false
-
+            
         }
-       
+        
     }
     
     /// Function that applies effects to the enemy.
@@ -168,7 +166,7 @@ class Enemy: SKSpriteNode {
             return true
         }
         return false
-    }    
+    }
     
     func update(){
         let now = Date.now

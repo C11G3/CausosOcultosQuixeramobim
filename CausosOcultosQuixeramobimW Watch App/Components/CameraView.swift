@@ -31,12 +31,17 @@ struct CameraView: View {
                     watchOSConnectivity.shared.sendApplicationContext(data: ["" : monsterPositoon])
                     
                 } label: {
-                    Text("Attract")
+                    RoundedRectangle(cornerRadius: 30)
+                        .frame(width:60, height:20)
+                        .foregroundStyle(.black)
+                    
                 }
                 .buttonStyle(.plain)
-                .padding(15)
-                .background(.red)
-                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .padding(5)
+                .overlay(
+                    Text("Atrair")
+                        .font(.RubikDirt(fontStyle: .caption))
+                )
                 .padding(15)
             }
         }
@@ -44,5 +49,5 @@ struct CameraView: View {
 }
 
 #Preview {
-    CameraView(scene: "scene", monsterPositoon: "Entrance")
+    CameraView(scene: "ENTRANCE", monsterPositoon: "ENTRANCE")
 }

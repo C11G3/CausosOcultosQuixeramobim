@@ -56,12 +56,20 @@
 			);
 			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
 		};
+		E1AE58992F5600E1002E9A45 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobim" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E1BCCA6C2F50BA4300BC8174 /* CausosOcultosQuixeramobim */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E1BCCA6F2F50BA4300BC8174 /* CausosOcultosQuixeramobim */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				E1AE58992F5600E1002E9A45 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobim" target */,
 				E18F46C92F50DAFC0020DC59 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobimW Watch App" target */,
 			);
 			path = CausosOcultosQuixeramobim;
@@ -370,6 +378,7 @@
 				DEVELOPMENT_TEAM = 2B49H9LV4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CausosOcultosQuixeramobim/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -406,6 +415,7 @@
 				DEVELOPMENT_TEAM = 2B49H9LV4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CausosOcultosQuixeramobim/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

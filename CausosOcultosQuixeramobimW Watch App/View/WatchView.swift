@@ -20,10 +20,8 @@ struct WatchView: View {
                 .tag(0)
             CameraView(scene: currentMonsterPosition == ["" : "WINDOW"] ? "WINDOWMONSTER" : "WINDOW", monsterPositoon: "WINDOW")
                 .tag(1)
-            CameraView(scene: currentMonsterPosition == ["" : "SHELF"] ? "SHELFMONSTER" : "SHELF", monsterPositoon: "SHELF")
-                .tag(2)
             CameraView(scene: currentMonsterPosition == ["" : "KITCHEN"] ? "KITCHENMONSTER" : "KITCHEN", monsterPositoon: "KITCHEN")
-                .tag(3)
+                .tag(2)
         }
         .tabViewStyle(.carousel)
         .focusable(true)

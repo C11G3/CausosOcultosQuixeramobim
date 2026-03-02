@@ -24,47 +24,45 @@ struct ScenePositions: View {
     let index: Int
     
     var body: some View {
-        GeometryReader { geometry in
-            if SceneManager.shared.isZoomed {
-                ZStack{
-                    SpriteView(scene: scenesCloseUp[index])
-                        .onAppear{
-                            scenesCloseUp[index].scaleMode = .fill
-                        }
-                        .ignoresSafeArea(.all)
-                    VStack{
-                        HStack{
-                            Button {
-                                SceneManager.shared.isZoomed = false
-                            } label: {
-                                Text("back")
-                            }
-                            Spacer()
-                        }
-                        Spacer()
+        if SceneManager.shared.isZoomed {
+            ZStack {
+                SpriteView(scene: scenesCloseUp[index])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.25)))
+                    .frame(height: UIScreen.main.bounds.height * 1.1)
+                    .ignoresSafeArea()
+                
+                HStack {
+                    Button {
+                        SceneManager.shared.isZoomed = false
+                    } label: {
+                        Image("chevronLeft")
+                            .resizable()
+                            .frame(width: 70, height: 70)
                     }
-                    
-                }
-            } else {
-                ZStack{
-                    SpriteView(scene: scenes[index])
-                        .onAppear{
-                            scenes[index].scaleMode = .fill
-                        }
-                        .ignoresSafeArea(.all)
-                    VStack{
-                        Spacer()
-                        HStack {
-                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
-                            Spacer()
-                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
-                        }
-                        Spacer()
-                        //                        Text("\(currentScene)")
-                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(.top, 50)
                 }
             }
+        } else {
+            ZStack {
+                SpriteView(scene: scenes[index])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.087)))
+                    .frame(height: UIScreen.main.bounds.height * 1)
+                    .ignoresSafeArea()
+                
+                HStack {
+                    ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
+                    
+                    Spacer()
+                    
+                    ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
+                }
+                .padding(.top, 30)
+            }
         }
-        
     }
+}
+
+#Preview {
+    GameView()
 }

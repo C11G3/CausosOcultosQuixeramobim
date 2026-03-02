@@ -29,10 +29,10 @@ class EntranceCloseup: SKScene {
             wasEnemyHere = true
         }
         
-        if GameController.sheerd.door.parent == nil{
-            GameController.sheerd.door.position.y = frame.midY
-            GameController.sheerd.door.position.x = frame.midX
-            GameController.sheerd.door.size = CGSize(width: 0.8, height: 0.8)
+        if GameController.sheerd.window.parent == nil {
+            GameController.sheerd.window.position.y = frame.midY
+            GameController.sheerd.window.position.x = frame.midX
+            GameController.sheerd.window.size = CGSize(width: 2, height: 2.5)
             
             addChild(GameController.sheerd.door)
         }

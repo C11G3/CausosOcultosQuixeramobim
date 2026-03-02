@@ -17,18 +17,14 @@ struct ArrowButton: View {
     var destination: Positions
     
     var body: some View {
-        VStack{
+        VStack (alignment: .center){
             Button {
                 sceneState = destination
                 SceneManager.shared.isZoomed = false
             } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 50, height: 50)
-                        .foregroundStyle(.blue)
-                    Image(systemName: symbolDirection ? "chevron.left" : "chevron.right")
-                        .foregroundStyle(.black)
-                }
+                Image(symbolDirection ? "chevronLeft" : "chevronRight")
+                    .resizable()
+                    .frame(width: 70, height: 70)
             }
         }
     }

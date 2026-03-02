@@ -19,6 +19,20 @@ class GameController {
     var kitchenWindow = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .KITCHEN)
     var door = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .ENTRANCE)
     
+    var countdownTimer = 15
+    
+    func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if self.countdownTimer > 0 {
+                print(self.countdownTimer)
+                self.countdownTimer -= 1
+            } else {
+                timer.invalidate()
+                print("Acabou o timer")
+            }
+        }
+    }
+    
     func canAppear(position: Positions) -> Bool {
         if enemy.getPosition() == position && enemy.getState() == .ATTACKING && enemy.parent == nil {
             return true

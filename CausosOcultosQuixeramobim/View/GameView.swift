@@ -33,45 +33,44 @@ struct GameView: View {
     }
     
     var body: some View {
-        if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer > 0 {
-            switch currentScene {
-            case .WINDOW:
-                ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
-                
-            case .ENTRANCE:
-                ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
-                
-            case .KITCHEN:
-                ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
-                
-            case .SHELF:
-                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
-                
-            case .NONE:
-                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+        ZStack {
+            if SceneManager.shared.isPlayerAlive == true {
+                switch currentScene {
+                case .WINDOW:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
+                    
+                case .ENTRANCE:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
+                    
+                case .KITCHEN:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
+                    
+                case .SHELF:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+                    
+                case .NONE:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+                }
             }
-        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
-            TesteConnect()
-            
-        } else {
-            GameOverView()
+            else{
+                GameOverView()
+            }
+            Text("")
+                .onAppear() {
+                    // Activating the WCSession
+                    iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+                }
+                .onChange(of: GameController.sheerd.enemy.actualPosition) {
+                    monsterPosition = GameController.sheerd.enemy.getPosition()
+                    iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
+                    print(monsterPosition!)
+                }
+                .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                    baitMonsterPosition = data as? [String : String]
+                    GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
+                    print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
+                }
         }
-        Text("")
-            .onAppear() {
-                // Activating the WCSession
-                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
-                GameController.sheerd.startTimer()
-            }
-            .onChange(of: GameController.sheerd.enemy.actualPosition) {
-                monsterPosition = GameController.sheerd.enemy.getPosition()
-                iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
-                print(monsterPosition!)
-            }
-            .onReceive(iOSConnectivity.shared.$receivedData) { data in
-                baitMonsterPosition = data as? [String : String]
-                GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
-                print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
-            }
     }
 }
 

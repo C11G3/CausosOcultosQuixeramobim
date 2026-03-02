@@ -9,9 +9,30 @@ import SwiftUI
 
 struct GameOverView: View {
     var body: some View {
-        Image("telaDerrota")
-            .resizable()
- 
+        NavigationStack {
+            VStack {
+                Text("Você foi")
+                    .foregroundStyle(.white)
+                    .font(.RubikDirt(fontStyle: .title2))
+                    .frame(width: UIScreen.main.bounds.width * 0.3)
+                
+                Text("Derrotado")
+                    .foregroundStyle(.white)
+                    .font(.RubikDirt(fontStyle: .title))
+                    .padding(.bottom, 20)
+                
+                HStack {
+                    GenericButtonRubikDoodle(destination: {MenuView()}, text: "Menu")
+                    
+                    Spacer()
+                    
+                    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar Novamente")
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.5)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black)
+        }
     }
 }
 

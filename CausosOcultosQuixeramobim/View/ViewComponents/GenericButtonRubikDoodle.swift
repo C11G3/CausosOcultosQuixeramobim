@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct GenericButtonRubikDoodle: View {
-    var destination: any View
+struct GenericButtonRubikDoodle<Content: View>: View {
+    @ViewBuilder var destination: Content
     var text: String
     
     var body: some View {
-//        NavigationLink {
-//            destination
-//        } label: {
-//            Text(text)
-//                .foregroundColor(.white)
-//                .font(.RubikDoodleShadow(fontStyle: .title3))
-//                .padding()
-//                .background(
-//                    RoundedRectangle(cornerRadius: 16)
-//                        .stroke(.white, lineWidth: 2)
-//                )
-//        }
+        NavigationLink {
+            destination
+        } label: {
+            Text(text)
+                .foregroundColor(.white)
+                .font(.RubikDoodleShadow(fontStyle: .title3))
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.white, lineWidth: 2)
+                )
+        }
     }
 }
 
 #Preview {
-    GenericButtonRubikDoodle(destination: GameView(), text: "Jogar")
+    GenericButtonRubikDoodle(destination: {GameView()}, text: "Jogar")
 }

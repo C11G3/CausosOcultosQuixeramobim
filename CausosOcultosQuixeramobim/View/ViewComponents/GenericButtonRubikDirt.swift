@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct GenericButtonRubikDirt: View {
-    var destination: any View
+struct GenericButtonRubikDirt<Content: View>: View {
+    @ViewBuilder var destination: Content
     var text: String
     
     var body: some View {
-//            NavigationLink {
-//                destination
-//            } label: {
-//                Text(text)
-//                    .foregroundColor(.black)
-//                    .font(.RubikDirt(fontStyle: .title3))
-//                    .padding()
-//                    .background(
-//                        RoundedRectangle(cornerRadius: 16)
-//                            .foregroundStyle(.white)
-//                    )
-//            }
+            NavigationLink {
+                destination
+            } label: {
+                Text(text)
+                    .foregroundColor(.black)
+                    .font(.RubikDirt(fontStyle: .title3))
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.white)
+                    )
+            }
     }
 }
 
 #Preview {
-    GenericButtonRubikDirt(destination: GameView(), text: "Jogar")
+    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar")
 }

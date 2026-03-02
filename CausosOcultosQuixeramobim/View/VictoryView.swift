@@ -23,22 +23,11 @@ struct VictoryView: View {
                     .padding(.bottom, 20)
                 
                 HStack {
-//                    GenericButtonRubikDirt(destination: GameView(), backgroundColor: .white, textColor: .black, text: "Jogar Novamente")git 
+                    GenericButtonRubikDoodle(destination: {MenuView()}, text: "Menu")
                     
                     Spacer()
                     
-                    NavigationLink {
-                        MenuView()
-                    } label: {
-                        Text("Menu")
-                            .foregroundColor(.black)
-                            .font(.RubikDirt(fontStyle: .title3))
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .foregroundStyle(.white)
-                            )
-                    }
+                    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar Novamente")
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.5)
             }

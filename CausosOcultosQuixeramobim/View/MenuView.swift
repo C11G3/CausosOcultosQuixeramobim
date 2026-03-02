@@ -21,7 +21,8 @@ struct MenuView: View {
                     .font(.RubikDirt(fontStyle: .title2))
                     .padding(.bottom, 20)
                 
-//                GenericButtonRubikDirt(destination: GameView(), backgroundColor: .white, textColor: .blue, text: "Jogar")
+                GenericButtonRubikDirt(destination: {GameView()},  text: "Jogar")
+                GenericButtonRubikDoodle(destination: {TesteConnect()}, text: "Sobre o Jogo")
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)

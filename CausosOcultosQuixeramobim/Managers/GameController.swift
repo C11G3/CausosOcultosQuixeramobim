@@ -19,16 +19,14 @@ class GameController {
     var kitchenWindow = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .KITCHEN)
     var door = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .ENTRANCE)
     
-    var countdownTimer = 45678
+    var countdownTimer = 30
     
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if self.countdownTimer > 0 {
-                print(self.countdownTimer)
                 self.countdownTimer -= 1
             } else {
                 timer.invalidate()
-                print("Acabou o timer")
             }
         }
     }
@@ -45,5 +43,14 @@ class GameController {
         window.update()
         kitchenWindow.update()
         door.update()
+    }
+    
+    func reset(){
+        enemy.reset()
+        player.reset()
+        window.reset()
+        kitchenWindow.reset()
+        door.reset()
+        countdownTimer = 30
     }
 }

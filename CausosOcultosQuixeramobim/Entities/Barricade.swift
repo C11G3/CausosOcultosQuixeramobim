@@ -56,4 +56,11 @@ class Barricade: SKSpriteNode {
     func getHealth() -> Double {
         return health
     }
+    
+    func reset(){
+        health = 20
+        timer = Date.now
+        deltaTimer = 3
+        autoDamage = 5
+    }
 }

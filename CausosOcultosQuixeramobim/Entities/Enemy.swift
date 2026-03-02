@@ -192,4 +192,17 @@ class Enemy: SKSpriteNode {
             }
         }
     }
+    
+    func reset(){
+        actualState = .IDLE
+        actualPosition = .NONE
+        
+        health = 3
+        barricadeDamage = 20
+        difficulty = 5
+        
+        walkTimer = Date.now
+        attackTimer = Date.now
+        attackDeltaTime = 10
+    }
 }

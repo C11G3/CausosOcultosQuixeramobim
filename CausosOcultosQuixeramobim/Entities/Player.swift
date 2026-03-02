@@ -55,4 +55,13 @@ class Player: SKSpriteNode {
     func setKnowledge(){
         knowledge = true
     }
+    
+    func reset(){
+        actualPosition = .WINDOW
+        isAlive = true
+        knowledge = false
+        barricadeCooldown = 2
+        damage = 1
+        maxBarricades = 3
+    }
 }

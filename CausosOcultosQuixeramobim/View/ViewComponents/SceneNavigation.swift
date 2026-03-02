@@ -32,8 +32,6 @@ struct ScenePositions: View {
                             scenesCloseUp[index].scaleMode = .fill
                         }
                     VStack{
-
-                        
                         HStack{
                             Button {
                                 SceneManager.shared.isZoomed = false
@@ -42,6 +40,9 @@ struct ScenePositions: View {
                             }
                             Spacer()
                         }
+                        .padding(.vertical, -30)
+
+                        
                         Spacer()
 
                         HStack {
@@ -55,7 +56,6 @@ struct ScenePositions: View {
 
                         
                     }
-                    
                 }
             } else {
                 SpriteView(scene: scenes[index])

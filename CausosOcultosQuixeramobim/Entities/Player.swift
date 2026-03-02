@@ -25,8 +25,12 @@ class Player: SKSpriteNode {
     @State var actualPosition : Positions = .WINDOW
     var isAlive : Bool = true
     var knowledge : Bool = false
-    var barricadeCooldown : Double = 2
     var damage : Double = 1
+    
+    var barricadeTimer: Date = Date.now
+    var reloadBarricadeTimer: Date = Date.now
+
+    var actualBarricades: Int = 3
     var maxBarricades : Double = 3
     
     /// Function responsible for defining the player's position between scenes.
@@ -45,10 +49,21 @@ class Player: SKSpriteNode {
     
     /// Function responsible for adding a barricade to the breach.
     func buildBarricade(breach: Breach){
-//        SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
-            let barricade = Barricade(color: UIColor.blue, size: CGSize(width: 0.001, height: 0.001))
+        let now = Date.now
+        if now.timeIntervalSince(barricadeTimer) >= 2 && actualBarricades > 0{
+            let barricade = Barricade()
             breach.addBarricades(barricade: barricade)
-            print(breach.getNumOfBarricade())
+            barricadeTimer = Date.now
+            actualBarricades -= 1
+        }
+    }
+    
+    private func reciveBarricada(){
+        let now = Date.now
+        if now.timeIntervalSince(reloadBarricadeTimer) >= 3 && actualBarricades < 3{
+            actualBarricades += 1
+            print("BARRICADAAAAA")
+        }
     }
     
     /// Function responsible to set the knowledge of the enemy's weakness
@@ -60,8 +75,13 @@ class Player: SKSpriteNode {
         actualPosition = .WINDOW
         isAlive = true
         knowledge = false
-        barricadeCooldown = 2
+        barricadeTimer = Date.now
         damage = 1
         maxBarricades = 3
+        actualBarricades = 3
+    }
+    
+    func update(){
+        reciveBarricada()
     }
 }

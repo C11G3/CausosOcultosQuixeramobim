@@ -20,24 +20,21 @@ class WindowCloseup: SKScene {
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
         
-        if backGround.parent == nil {
-            addChild(backGround)
-            addChild(GameController.sheerd.window)
-
-        }
-        
-        if GameController.sheerd.enemy.canAppear(position: .WINDOW) {
-            addChild(GameController.sheerd.enemy)
-            wasEnemyHere = true
-        }
-        if GameController.sheerd.window.parent == nil{
+        if GameController.sheerd.window.parent == nil {
             GameController.sheerd.window.position.y = frame.midY
             GameController.sheerd.window.position.x = frame.midX
             GameController.sheerd.window.size = CGSize(width: 0.8, height: 0.8)
-            
+            GameController.sheerd.window.alpha = 1.0
+            GameController.sheerd.window.zPosition = 100
             addChild(GameController.sheerd.window)
+            wasEnemyHere = true
+        }
+        
+        if backGround.parent == nil {
+            addChild(backGround)
         }
     }
+
     
     // Check if the object is being touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

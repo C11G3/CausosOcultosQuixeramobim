@@ -20,7 +20,7 @@ import SpriteKit
 class Barricade: SKSpriteNode {
     private var health: Double = 20
     private var timer = Date.now
-    private var deltaTimer: Double = 3
+    private var deltaTimer: Double = 5
     private var autoDamage: Double = 5
     
 //    override init(texture: SKTexture?, color: UIColor, size: CGSize) {
@@ -39,7 +39,11 @@ class Barricade: SKSpriteNode {
     func decayHealth() {
         let now = Date.now
         if now.timeIntervalSince(timer) >= deltaTimer {
+            timer = Date.now
             applyDamage(autoDamage)
+            if health <= 0 {
+                self.removeFromParent()
+            }
         }
     }
     

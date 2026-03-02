@@ -24,6 +24,8 @@ class KitchenCloseup: SKScene {
             GameController.sheerd.kitchenWindow.position.y = frame.midY
             GameController.sheerd.kitchenWindow.position.x = frame.midX
             GameController.sheerd.kitchenWindow.size = CGSize(width: 0.8, height: 0.8)
+            GameController.sheerd.kitchenWindow.alpha = 1.0
+            GameController.sheerd.kitchenWindow.zPosition = 100
             addChild(GameController.sheerd.kitchenWindow)
             wasEnemyHere = true
         }

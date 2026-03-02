@@ -50,10 +50,8 @@ struct GameView: View {
             case .NONE:
                 ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
             }
-        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
-            TesteConnect()
-            
-        } else {
+        }
+        else {
             GameOverView()
         }
         Text("")
@@ -72,6 +70,7 @@ struct GameView: View {
                 GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
+            .navigationBarBackButtonHidden(true)
     }
 }
 

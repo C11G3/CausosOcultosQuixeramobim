@@ -39,6 +39,7 @@ class GameController {
     }
     
     func update(){
+        player.update()
         enemy.update()
         window.update()
         kitchenWindow.update()

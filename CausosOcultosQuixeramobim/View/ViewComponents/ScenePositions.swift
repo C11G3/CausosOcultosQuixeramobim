@@ -31,6 +31,7 @@ struct ScenePositions: View {
                         .onAppear{
                             scenesCloseUp[index].scaleMode = .fill
                         }
+                        .ignoresSafeArea(.all)
                     VStack{
                         HStack{
                             Button {
@@ -41,39 +42,42 @@ struct ScenePositions: View {
                             Spacer()
                         }
                         .padding(.vertical, -30)
-
+                        
                         
                         Spacer()
-
+                        
                         HStack {
-                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
+                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
                             
                             Spacer()
                             
-                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
                         }
                         Spacer()
-
+                        
                         
                     }
                 }
             } else {
-                SpriteView(scene: scenes[index])
-                    .onAppear{
-                        scenes[index].scaleMode = .fill
-                    }
-                    .ignoresSafeArea(.all)
-                VStack{
-                    Spacer()
-                    HStack {
-                        ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
+                ZStack{
+                    SpriteView(scene: scenes[index])
+                        .onAppear{
+                            scenes[index].scaleMode = .fill
+                        }
+                        .ignoresSafeArea(.all)
+                    VStack{
                         Spacer()
-                        ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
+                        HStack {
+                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
+                            Spacer()
+                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
+                        }
+                        Spacer()
+                        Text("\(currentScene)")
                     }
-                    Spacer()
-                    Text("\(currentScene)")
                 }
             }
         }
+        .padding(.vertical, -20)
     }
 }

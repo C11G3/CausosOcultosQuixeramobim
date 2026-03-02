@@ -17,14 +17,14 @@ struct GenericButtonRubikDirt<Content: View>: View {
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text(text)
-                    .foregroundColor(.black)
-                    .font(.RubikDirt(fontStyle: .title3))
                     .padding()
+                    .foregroundColor(.black)
                     .background(
                         RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.white)
-                    )
+                            .foregroundStyle(.white))
+                    .font(.custom("RubikDirt.ttf", size: 30))
             }
+            .navigationBarBackButtonHidden(true)
     }
 }
 

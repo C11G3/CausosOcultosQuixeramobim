@@ -149,7 +149,7 @@ class Enemy: SKSpriteNode {
     ///
     /// - Parameters:
     ///     - damege: Damage that will be applicated in the enemy
-    func applyDamage(damage:Double){
+    func applyDamage(damage: Double){
         health -= damage
     }
     

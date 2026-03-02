@@ -18,7 +18,6 @@ struct GameView: View {
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
     
-    
     init() {
         let tempScenes:  [SKScene] = [Window(), Entrance(), Kitchen(), Shelf()]
         for i in tempScenes {

@@ -1,17 +1,18 @@
 //
-//  GameOverView.swift
+//  VictoryView.swift
 //  CausosOcultosQuixeramobim
 //
-//  Created by Jonas Fernando Nascimento Melo on 27/02/26.
+//  Created by Dayô Araújo on 27/02/26.
 //
 
+import Foundation
 import SwiftUI
 
-struct GameOverView: View {
+struct VictoryView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Você foi")
+                Text("capelobo foi")
                     .foregroundStyle(.white)
                     .font(.RubikDirt(fontStyle: .title2))
                     .frame(width: UIScreen.main.bounds.width * 0.3)
@@ -37,5 +38,5 @@ struct GameOverView: View {
 }
 
 #Preview {
-    GameOverView()
+    VictoryView()
 }

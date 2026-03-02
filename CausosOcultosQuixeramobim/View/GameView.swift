@@ -60,33 +60,46 @@ struct GameView: View {
                         Spacer()
                     }
                 }
+                else{
+                    GameOverView()
+                }
+                Text("")
+                    .onAppear() {
+                        // Activating the WCSession
+                        iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+                    }
+                    .onChange(of: GameController.sheerd.enemy.actualPosition) {
+                        monsterPosition = GameController.sheerd.enemy.getPosition()
+                        iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
+                        print(monsterPosition!)
+                    }
+                    .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                        baitMonsterPosition = data as? [String : String]
+                        GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
+                        print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
+                    }
             }
-        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
-            TesteConnect()
-            
-        } else {
-            GameOverView()
+            Text("")
+                .onAppear() {
+                    // Activating the WCSession
+                    iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+                    GameController.sheerd.startTimer()
+                }
+                .onChange(of: GameController.sheerd.enemy.actualPosition) {
+                    monsterPosition = GameController.sheerd.enemy.getPosition()
+                    iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
+                    print(monsterPosition!)
+                }
+                .onChange(of: GameController.sheerd.currentHour) {
+                    self.currentHour = GameController.sheerd.currentHour
+                }
+                .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                    baitMonsterPosition = data as? [String : String]
+                    GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
+                    print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
+                }
+                .navigationBarBackButtonHidden(true)
         }
-        Text("")
-            .onAppear() {
-                // Activating the WCSession
-                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
-                GameController.sheerd.startTimer()
-            }
-            .onChange(of: GameController.sheerd.enemy.actualPosition) {
-                monsterPosition = GameController.sheerd.enemy.getPosition()
-                iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
-                print(monsterPosition!)
-            }
-            .onChange(of: GameController.sheerd.currentHour) {
-                self.currentHour = GameController.sheerd.currentHour
-            }
-            .onReceive(iOSConnectivity.shared.$receivedData) { data in
-                baitMonsterPosition = data as? [String : String]
-                GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
-                print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
-            }
-            .navigationBarBackButtonHidden(true)
     }
 }
 

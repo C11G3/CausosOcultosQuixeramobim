@@ -95,7 +95,7 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
         if isActivated {
             send(message: passData)
         } else {
-            print("⏳ Session not ready. Queuing login status.")
+            print("Session not ready. Queuing login status.")
             pendingMessages.append(passData)
         }
     }
@@ -104,7 +104,7 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             self.receivedData = message
-            print("📩 iOS received message: \(message)")
+            print("iOS received message: \(message)")
         }
     }
     

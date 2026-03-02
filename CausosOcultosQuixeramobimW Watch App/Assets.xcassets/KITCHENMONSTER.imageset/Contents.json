@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "KITCHENMONSTER.jpeg",
+      "filename" : "MONSTERKITCHEN.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "KITCHENMONSTER 1.jpeg",
+      "filename" : "MONSTERKITCHEN 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "KITCHENMONSTER 2.jpeg",
+      "filename" : "MONSTERKITCHEN 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

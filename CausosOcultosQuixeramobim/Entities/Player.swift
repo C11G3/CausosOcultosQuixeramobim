@@ -27,6 +27,7 @@ class Player: SKSpriteNode {
     var knowledge : Bool = false
     var barricadeCooldown : Double = 2
     var damage : Double = 1
+    var maxBarricades : Double = 3
     
     /// Function responsible for defining the player's position between scenes.
     func walk(position: Positions) {

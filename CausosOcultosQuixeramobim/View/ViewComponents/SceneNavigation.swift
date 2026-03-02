@@ -31,16 +31,9 @@ struct ScenePositions: View {
                         .onAppear{
                             scenesCloseUp[index].scaleMode = .fill
                         }
-                        .overlay {
-                            HStack {
-                                ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
-                                
-                                Spacer()
-                                
-                                ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
-                            }
-                        }
                     VStack{
+
+                        
                         HStack{
                             Button {
                                 SceneManager.shared.isZoomed = false
@@ -50,6 +43,17 @@ struct ScenePositions: View {
                             Spacer()
                         }
                         Spacer()
+
+                        HStack {
+                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
+                            
+                            Spacer()
+                            
+                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+                        }
+                        Spacer()
+
+                        
                     }
                     
                 }
@@ -59,17 +63,15 @@ struct ScenePositions: View {
                         scenes[index].scaleMode = .fill
                     }
                     .ignoresSafeArea(.all)
-                ZStack{
-                    VStack{
+                VStack{
+                    Spacer()
+                    HStack {
+                        ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
                         Spacer()
-                        HStack {
-                            ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
-                            Spacer()
-                            ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
-                        }
-                        Spacer()
-                        Text("\(currentScene)")
+                        ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
                     }
+                    Spacer()
+                    Text("\(currentScene)")
                 }
             }
         }

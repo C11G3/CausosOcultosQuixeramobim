@@ -20,7 +20,7 @@ class GameController {
     var door = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .ENTRANCE)
     
     var countdownTimer = 300
-    var currentHour = 4
+    var currentHour = 2
     
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -30,11 +30,11 @@ class GameController {
                 case 225:
                     self.currentHour = 3
                 case 150:
-                    self.currentHour = 2
+                    self.currentHour = 4
                 case 75:
-                    self.currentHour = 1
+                    self.currentHour = 5
                 case 1:
-                    self.currentHour = 0
+                    self.currentHour = 6
                 default:
                     return
                 }

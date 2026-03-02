@@ -31,13 +31,14 @@ struct ScenePositions: View {
                         .onAppear{
                             scenesCloseUp[index].scaleMode = .fill
                         }
+                        .ignoresSafeArea(.all)
                         .overlay {
                             HStack {
-                                ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationRight)
+                                ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
                                 
                                 Spacer()
                                 
-                                ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationLeft)
+                                ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
                             }
                         }
                     VStack{

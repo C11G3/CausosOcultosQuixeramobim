@@ -86,7 +86,7 @@ class Enemy: SKSpriteNode {
         } else if rand < 50{
             actualPosition = position2
         } else {
-            actualState = .ATTACKING
+            actualState = .IDLE
         }
     }
     

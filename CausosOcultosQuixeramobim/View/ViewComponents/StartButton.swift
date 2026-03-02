@@ -14,6 +14,8 @@ struct StartButton: View {
         if fontType == "RubikDirt" {
             NavigationLink {
                 GameView()
+                    .navigationBarBackButtonHidden(true)
+
             } label: {
                 Text("Jogar")
                     .foregroundColor(.black)
@@ -24,6 +26,7 @@ struct StartButton: View {
                             .foregroundStyle(.white)
                     )
             }
+
         } else {
             NavigationLink {
                 TesteConnect()

@@ -17,13 +17,13 @@ struct GenericButtonRubikDoodle<Content: View>: View {
         } label: {
             Text(text)
                 .foregroundColor(.white)
-                .font(.RubikDoodleShadow(fontStyle: .title3))
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.white, lineWidth: 2)
-                )
+                        .stroke(.white, lineWidth: 2))
+                .font((.rubikFont(fontStyle: .title3)))
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

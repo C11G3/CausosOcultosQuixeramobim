@@ -13,13 +13,13 @@ struct GameOverView: View {
             VStack {
                 Text("Você foi")
                     .foregroundStyle(.white)
-                    .font(.RubikDirt(fontStyle: .title2))
                     .frame(width: UIScreen.main.bounds.width * 0.3)
+                    .font((.rubikFont(fontStyle: .title3)))
                 
                 Text("Derrotado")
                     .foregroundStyle(.white)
-                    .font(.RubikDirt(fontStyle: .title))
                     .padding(.bottom, 20)
+                    .font((.rubikFont(fontStyle: .title3)))
                 
                 HStack {
                     GenericButtonRubikDoodle(destination: {MenuView()}, text: "Menu")

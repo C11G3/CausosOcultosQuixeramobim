@@ -72,6 +72,7 @@ struct GameView: View {
                 GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
+            .navigationBarBackButtonHidden(true)
     }
 }
 

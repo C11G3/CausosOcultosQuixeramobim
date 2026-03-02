@@ -32,15 +32,6 @@ struct ScenePositions: View {
                             scenesCloseUp[index].scaleMode = .fill
                         }
                         .ignoresSafeArea(.all)
-                        .overlay {
-                            HStack {
-                                ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
-                                
-                                Spacer()
-                                
-                                ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
-                            }
-                        }
                     VStack{
                         HStack{
                             Button {
@@ -55,12 +46,12 @@ struct ScenePositions: View {
                     
                 }
             } else {
-                SpriteView(scene: scenes[index])
-                    .onAppear{
-                        scenes[index].scaleMode = .fill
-                    }
-                    .ignoresSafeArea(.all)
                 ZStack{
+                    SpriteView(scene: scenes[index])
+                        .onAppear{
+                            scenes[index].scaleMode = .fill
+                        }
+                        .ignoresSafeArea(.all)
                     VStack{
                         Spacer()
                         HStack {
@@ -69,10 +60,11 @@ struct ScenePositions: View {
                             ArrowButton(sceneState: $currentScene, symbolDirection: false, destination: destinationRight)
                         }
                         Spacer()
-                        Text("\(currentScene)")
+                        //                        Text("\(currentScene)")
                     }
                 }
             }
         }
+        
     }
 }

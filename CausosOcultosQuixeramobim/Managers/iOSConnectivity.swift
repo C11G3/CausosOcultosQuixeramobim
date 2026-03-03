@@ -27,11 +27,16 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
     private var isActivated = false
     private var pendingMessages: [[String : Any]] = []
     
+    public var isConnected: Bool = false
+    
     private override init() {
         super.init()
         if WCSession.isSupported() {
             session.delegate = self
             session.activate()
+        }
+        if session.isWatchAppInstalled {
+            isConnected.toggle()
         }
     }
     
@@ -79,7 +84,8 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
             session.sendMessage(message, replyHandler: nil) { error in
                 print("Failed to send message: \(error.localizedDescription)")
             }
-        } else {
+        }
+        else {
             // Application Context ensures message is delivered later if watch is unreachable
             do {
                 try session.updateApplicationContext(message)
@@ -94,7 +100,8 @@ class iOSConnectivity: NSObject, WCSessionDelegate, ObservableObject {
     func sendToWatch(passData: [String:Any]) {
         if isActivated {
             send(message: passData)
-        } else {
+        }
+        else {
             print("Session not ready. Queuing login status.")
             pendingMessages.append(passData)
         }

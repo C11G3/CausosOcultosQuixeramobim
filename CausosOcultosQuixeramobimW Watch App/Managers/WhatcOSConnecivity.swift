@@ -61,7 +61,6 @@ class watchOSConnectivity: NSObject, ObservableObject {
 
 // MARK: - WCSessionDelegate
 extension watchOSConnectivity: WCSessionDelegate {
-    
     /// Handles session activation state
     func session(_ session: WCSession,
                  activationDidCompleteWith activationState: WCSessionActivationState,

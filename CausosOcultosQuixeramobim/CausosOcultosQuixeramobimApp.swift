@@ -13,7 +13,6 @@ struct CausosOcultosQuixeramobimApp: App {
     var body: some Scene {
         WindowGroup {
             MenuView()
-//            TesteConnect()
         }
     }
 }

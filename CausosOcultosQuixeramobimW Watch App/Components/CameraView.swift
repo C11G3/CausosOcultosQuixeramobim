@@ -40,7 +40,7 @@ struct CameraView: View {
                 .padding(5)
                 .overlay(
                     Text("Atrair")
-                        .font(.RubikDirt(fontStyle: .caption))
+                        .font(.caption)
                 )
                 .padding(15)
             }

@@ -28,6 +28,10 @@ struct GameOverView: View {
                 Spacer()
                 
                 GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
+                    .onTapGesture {
+                        SceneManager.shared.isPlayerAlive = true
+                        GameController.sheerd.reset()
+                    }
             }
             .frame(width: UIScreen.main.bounds.width * 0.5)
         }

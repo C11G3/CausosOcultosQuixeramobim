@@ -11,23 +11,26 @@ import SpriteKit
 /// Scene with background and clicable object that allows zooming
 /// - Parameter background: SKSpriteNode of background image
 class WindowCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomedWindowRoom")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "windowRoom")
     var wasEnemyHere = false
     
     // Creates the objects
     override func didMove(to view: SKView) {
-        backGround.size = frame.size
+        backGround.size.width = frame.size.width * 1.5
+        backGround.size.height = frame.size.height * 1.5
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
-        
+
         if GameController.sheerd.window.parent == nil {
             GameController.sheerd.window.position.y = frame.midY
-            GameController.sheerd.window.position.x = frame.midX * 1.1
-            GameController.sheerd.window.size = CGSize(width: 0.8, height: 1)
+            GameController.sheerd.window.position.x = frame.midX
+            GameController.sheerd.window.size.width = frame.size.width * 1.5
+            GameController.sheerd.window.size.height = frame.size.height * 1.5
             GameController.sheerd.window.alpha = 1.0
             GameController.sheerd.window.zPosition = 100
+            backGround.size.width = frame.size.width * 1.5
+
             addChild(GameController.sheerd.window)
-            wasEnemyHere = true
         }
         
         if backGround.parent == nil {

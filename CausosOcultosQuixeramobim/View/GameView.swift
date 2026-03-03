@@ -69,7 +69,6 @@ struct GameView: View {
         Text("")
             .onAppear() {
                 // Activating the WCSession
-                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
                 GameController.sheerd.startTimer()
             }
             .onChange(of: GameController.sheerd.enemy.actualPosition) {

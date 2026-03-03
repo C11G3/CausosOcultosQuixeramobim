@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct MenuView: View {
     var body: some View {
@@ -26,6 +27,10 @@ struct MenuView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
         }
     }
 }

@@ -34,14 +34,14 @@ struct CameraView: View {
                     RoundedRectangle(cornerRadius: 30)
                         .frame(width:60, height:20)
                         .foregroundStyle(.black)
+                        .padding(5)
+                        .overlay(
+                            Text("Atrair")
+                                .font(.caption)
+                        )
                     
                 }
                 .buttonStyle(.plain)
-                .padding(5)
-                .overlay(
-                    Text("Atrair")
-                        .font(.caption)
-                )
                 .padding(15)
             }
         }

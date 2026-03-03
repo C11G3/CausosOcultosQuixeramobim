@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "KITCHEN.jpg",
+      "filename" : "JANELA.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "KITCHEN 1.jpg",
+      "filename" : "JANELA 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "KITCHEN 2.jpg",
+      "filename" : "JANELA 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

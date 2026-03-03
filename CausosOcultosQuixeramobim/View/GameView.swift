@@ -12,9 +12,11 @@ import WatchConnectivity
 /// Display the main view
 /// `init:`  Scene initialization out of its array
 struct GameView: View {
+    @Environment(ViewNavigator.self) var navigator: ViewNavigator
     @State var currentScene: Positions = .WINDOW
     @State var monsterPosition: Positions?
     @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
+    @State var currentHour: Int = 4
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
     
@@ -33,8 +35,8 @@ struct GameView: View {
     }
     
     var body: some View {
-        ZStack {
-            if SceneManager.shared.isPlayerAlive == true {
+        if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer > 0 {
+            ZStack {
                 switch currentScene {
                 case .WINDOW:
                     ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
@@ -51,28 +53,43 @@ struct GameView: View {
                 case .NONE:
                     ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
                 }
+                if !SceneManager.shared.isZoomed {
+                    VStack (alignment: .trailing) {
+                        HourIndicator(currentTime: $currentHour)
+                            .padding(.top, UIScreen.main.bounds.height * 0.1)
+                            .padding(.leading, UIScreen.main.bounds.width * 0.7)
+                        Spacer()
+                    }
+                }
             }
-            else{
-                GameOverView()
-            }
-            Text("")
-                .onAppear() {
-                    // Activating the WCSession
-                    iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
-                }
-                .onChange(of: GameController.sheerd.enemy.actualPosition) {
-                    monsterPosition = GameController.sheerd.enemy.getPosition()
-                    iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
-                    print(monsterPosition!)
-                }
-                .onReceive(iOSConnectivity.shared.$receivedData) { data in
-                    baitMonsterPosition = data as? [String : String]
-                    GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
-                    print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
-                }
+        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
+            VictoryView(navigator: _navigator)
+        } else {
+            GameOverView(navigator: _navigator)
         }
+        Text("")
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+                GameController.sheerd.startTimer()
+            }
+            .onChange(of: GameController.sheerd.enemy.actualPosition) {
+                monsterPosition = GameController.sheerd.enemy.getPosition()
+                iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
+                print(monsterPosition!)
+            }
+            .onChange(of: GameController.sheerd.currentHour) {
+                self.currentHour = GameController.sheerd.currentHour
+            }
+            .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                baitMonsterPosition = data as? [String : String]
+                GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
+                print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
+            }
+            .navigationBarBackButtonHidden(true)
     }
 }
+
 
 #Preview {
     GameView()

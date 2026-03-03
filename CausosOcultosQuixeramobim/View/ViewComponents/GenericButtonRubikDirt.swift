@@ -7,26 +7,22 @@
 
 import SwiftUI
 
-struct GenericButtonRubikDirt<Content: View>: View {
-    @ViewBuilder var destination: Content
+struct GenericButtonRubikDirt: View {
+    @Environment(ViewNavigator.self) var navigator: ViewNavigator
+    var route: Routes
     var text: String
     
     var body: some View {
-            NavigationLink {
-                destination
-            } label: {
-                Text(text)
-                    .foregroundColor(.black)
-                    .font(.RubikDirt(fontStyle: .title3))
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.white)
-                    )
+        Text(text)
+            .padding()
+            .foregroundColor(.black)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.white))
+            .font(.custom("RubikDirt.ttf", size: 30))
+            .onTapGesture {
+                navigator.clear()
+                navigator.navigateTo(route)
             }
     }
-}
-
-#Preview {
-    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar")
 }

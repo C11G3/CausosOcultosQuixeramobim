@@ -41,6 +41,7 @@ import AVFoundation
         case playerMorrendo
         case radio
         case vento
+        case opening
     }
     
     func playSound(sound: soundTypes, soundName: String = "") {

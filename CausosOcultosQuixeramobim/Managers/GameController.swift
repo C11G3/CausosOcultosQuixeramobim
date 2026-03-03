@@ -17,9 +17,9 @@ class GameController {
     
     var window = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .WINDOW)
     var kitchenWindow = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .KITCHEN)
-    var door = Breach(texture: SKTexture(imageNamed: "window"), actualPosition: .ENTRANCE)
+    var door = Breach(texture: SKTexture(imageNamed: "door"), actualPosition: .ENTRANCE)
     
-    var countdownTimer = 300
+    var countdownTimer = 10
     var currentHour = 2
     
     func startTimer() {

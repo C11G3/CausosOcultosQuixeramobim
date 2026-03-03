@@ -81,12 +81,17 @@ class Enemy: SKSpriteNode {
     private func decideAction(position1: Positions, position2: Positions) {
         let rand = Int.random(in: 0...99)
         
-        if rand < 25 {
+        if rand < 20 {
+            return
+        }
+        else if rand < 40 {
             actualPosition = position1
-        } else if rand < 50{
+        }
+        else if rand < 60{
             actualPosition = position2
-        } else {
-            actualState = .IDLE
+        }
+        else {
+            actualState = .ATTACKING
         }
     }
     

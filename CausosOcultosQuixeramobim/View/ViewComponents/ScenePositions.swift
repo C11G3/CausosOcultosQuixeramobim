@@ -60,7 +60,6 @@ struct ScenePositions: View {
                 .padding(.top, 30)
             }
         }
-        .padding(.vertical, -20)
     }
 }
 

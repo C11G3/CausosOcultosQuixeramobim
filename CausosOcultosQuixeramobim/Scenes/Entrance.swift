@@ -12,7 +12,7 @@ import SpriteKit
 /// - Parameter background: SKSpriteNode of background image
 /// - Parameter window: SKSpriteNode of window image
 class Entrance: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "windowRoom")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "entrance")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size

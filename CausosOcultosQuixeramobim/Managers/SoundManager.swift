@@ -9,18 +9,42 @@ import SwiftUI
 import AVFoundation
 
 @Observable class SoundManager {
-    @State var playingSound: AVAudioPlayer?
+    var playingSound: AVAudioPlayer?
     
-    init(playingSound: AVAudioPlayer?) {
+    init(playingSound: AVAudioPlayer? = nil) {
         self.playingSound = playingSound
     }
     
+    //singleton para nao precisar inicializar em cada view
+    static let instance = SoundManager()
+    
+    // colocar nomes audios aqui, no enum.
     enum soundTypes: String {
-        case dummie
+        case ambientacaoNoite
+        case ataqueCerto
+        case ataqueErrado
+        case batimentoCardiaco
+        case batimentoLento
+        case caminhGrama
+        case capeloboOrigin
+        case capeloboProximo
+        case chamarCapelobo
+        case cigarra
+        case grilosAmbiente
+        case loboUivando
+        case madeiraDegradando
+        case madeiraJanela
+        case mudancaCamera
+        case pisoRangendo
+        case pagina
+        case passos
+        case playerMorrendo
+        case radio
+        case vento
     }
     
-    func playSound(named: String) {
-    
+    func playSound(sound: soundTypes, soundName: String = "") {
+        
         guard let path = Bundle.main.path(forResource: "", ofType: "mp3") else {
             print("The sound path was not created")
             return

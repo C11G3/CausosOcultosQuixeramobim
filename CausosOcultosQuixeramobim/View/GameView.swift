@@ -12,6 +12,7 @@ import WatchConnectivity
 /// Display the main view
 /// `init:`  Scene initialization out of its array
 struct GameView: View {
+    @Environment(ViewNavigator.self) var navigator: ViewNavigator
     @State var currentScene: Positions = .WINDOW
     @State var monsterPosition: Positions?
     @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
@@ -62,9 +63,9 @@ struct GameView: View {
                 }
             }
         } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
-            VictoryView()
+            VictoryView(navigator: _navigator)
         } else {
-            GameOverView()
+            GameOverView(navigator: _navigator)
         }
         Text("")
             .onAppear() {

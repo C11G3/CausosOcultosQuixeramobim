@@ -176,7 +176,7 @@ class Enemy: SKSpriteNode {
     func update(){
         let now = Date.now
         
-        if now.timeIntervalSince(walkTimer) > 3{
+        if now.timeIntervalSince(walkTimer) > 10{
             walk()
             walkTimer = Date.now
         }

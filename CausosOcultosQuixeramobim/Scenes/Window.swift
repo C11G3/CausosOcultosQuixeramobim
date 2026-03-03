@@ -14,6 +14,7 @@ import SwiftUI
 /// - Parameter window: SKSpriteNode of window image
 class Window: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "windowRoom")
+    var barricades: [Barricade] = []
     
     // Creates the objects
     override func didMove(to view: SKView) {
@@ -25,6 +26,17 @@ class Window: SKScene {
         if backGround.parent == nil {
             addChild(backGround)
         }
+        
+        if GameController.sheerd.window.parent == nil {
+            GameController.sheerd.window.position.y = frame.midY
+            GameController.sheerd.window.position.x = frame.midX
+            GameController.sheerd.window.size.width = frame.size.width
+            GameController.sheerd.window.size.height = frame.size.height
+            GameController.sheerd.window.alpha = 1.0
+            GameController.sheerd.window.zPosition = 100
+            
+            addChild(GameController.sheerd.window)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,16 +46,30 @@ class Window: SKScene {
     // Check if the object is being touched
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        let locationInScene = touch.location(in: self)
-        
-        let touchedNodes = nodes(at: locationInScene)
-        
-      
-        SceneManager.shared.isZoomed = true
-        
+        if SceneManager.shared.isZoomed == true {
+            GameController.sheerd.player.buildBarricade(breach: GameController.sheerd.window)
+        }else {
+            SceneManager.shared.isZoomed = true
+        }
     }
+    
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()
+        
+        if SceneManager.shared.isZoomed == true {
+            backGround.size.width = frame.width * 1.4
+            backGround.size.height = frame.height * 1.4
+            GameController.sheerd.window.size.width = frame.size.width * 1.4
+            GameController.sheerd.window.size.height = frame.size.height * 1.4
+            GameController.sheerd.window.scaleBarricades(scale: 1.0)
+        } else{
+            backGround.size.width = frame.width
+            backGround.size.height = frame.height
+            GameController.sheerd.window.size.width = frame.size.width
+            GameController.sheerd.window.size.height = frame.size.height
+            GameController.sheerd.window.scaleBarricades(scale: 0.7)
+            
+        }
     }
 }
 

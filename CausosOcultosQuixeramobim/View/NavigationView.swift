@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct NavigationView: View {
     @State var navigation = ViewNavigator()
@@ -20,6 +21,10 @@ struct NavigationView: View {
                         .environment(navigation)
                         .navigationBarBackButtonHidden(true)
                 }
+        }
+        .onAppear() {
+            // Activating the WCSession
+            iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
         }
     }
 }

@@ -15,22 +15,18 @@ class ViewNavigator {
 
     func navigateTo(_ route: Routes) {
         navigationPath.append(route)
-        print(navigationPath.count)
     }
     
     func pop() {
         navigationPath.removeLast()
-        print(navigationPath.count)
     }
     
     func setRoute(_ route: Routes) {
         startingPath = route
-        print(navigationPath.count)
     }
     
     func clear() {
         navigationPath.removeAll()
-        print(navigationPath.count)
     }
 }
 

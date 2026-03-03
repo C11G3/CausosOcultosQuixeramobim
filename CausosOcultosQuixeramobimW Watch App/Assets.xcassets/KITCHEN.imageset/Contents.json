@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "KITCHEN.png",
+      "filename" : "COZINHA 2.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "KITCHEN 1.png",
+      "filename" : "COZINHA.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "KITCHEN 2.png",
+      "filename" : "COZINHA 1.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

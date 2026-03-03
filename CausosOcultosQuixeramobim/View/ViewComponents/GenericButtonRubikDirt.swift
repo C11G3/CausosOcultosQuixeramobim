@@ -23,6 +23,8 @@ struct GenericButtonRubikDirt: View {
             .onTapGesture {
                 navigator.clear()
                 navigator.navigateTo(route)
+                SceneManager.shared.isPlayerAlive = true
+                GameController.sheerd.reset()
             }
     }
 }

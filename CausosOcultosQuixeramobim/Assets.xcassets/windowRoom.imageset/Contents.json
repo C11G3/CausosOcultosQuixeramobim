@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "window.png",
+      "filename" : "windowRoom.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "window 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "window 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

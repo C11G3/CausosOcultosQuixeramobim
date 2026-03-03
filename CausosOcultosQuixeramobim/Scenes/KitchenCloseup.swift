@@ -11,36 +11,43 @@ import SpriteKit
 /// Scene with background and clicable object that allows zooming
 /// - Parameter background: SKSpriteNode of background image
 class KitchenCloseup: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "zoomedWindowRoom")
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "kitchen")
     var wasEnemyHere = false
 
     // Creates the objects
     override func didMove(to view: SKView) {
-        backGround.size = frame.size
+        backGround.size.width = frame.width * 1.5
+        backGround.size.height = frame.height * 1.5
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
+        backGround.zPosition = -1
+            
+        if backGround.parent == nil {
+            addChild(backGround)
+        }
+        
+        if GameController.sheerd.enemy.canAppear(position: .ENTRANCE) {
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
+        }
         
         if GameController.sheerd.kitchenWindow.parent == nil {
             GameController.sheerd.kitchenWindow.position.y = frame.midY
             GameController.sheerd.kitchenWindow.position.x = frame.midX
-            GameController.sheerd.kitchenWindow.size = CGSize(width: 0.8, height: 0.8)
+            GameController.sheerd.kitchenWindow.size.width = frame.size.width * 1.5
+            GameController.sheerd.kitchenWindow.size.height = frame.size.height * 1.5
+            GameController.sheerd.kitchenWindow.alpha = 1.0
+            GameController.sheerd.kitchenWindow.zPosition = 100
+            backGround.size.width = frame.width * 1.5
+            backGround.size.height = frame.height * 1.5
+
             addChild(GameController.sheerd.kitchenWindow)
-            wasEnemyHere = true
-        }
-        
-        if backGround.parent == nil {
-            addChild(backGround)
         }
     }
     
     // Check if the object is being touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        
-        if GameController.sheerd.enemy.canAppear(position: .KITCHEN) {
-            addChild(GameController.sheerd.enemy)
-            wasEnemyHere = true
-        }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

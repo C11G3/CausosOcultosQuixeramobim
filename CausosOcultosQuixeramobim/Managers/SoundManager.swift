@@ -44,9 +44,9 @@ import AVFoundation
         case opening
     }
     
-    func playSound(sound: soundTypes, soundName: String = "") {
+    func playSound(sound: soundTypes) {
         
-        guard let path = Bundle.main.path(forResource: "", ofType: "mp3") else {
+        guard let path = Bundle.main.path(forResource: sound.rawValue, ofType: "mp3") else {
             print("The sound path was not created")
             return
         }

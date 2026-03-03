@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "WINDOWMONSTER.jpeg",
+      "filename" : "MONSTERWINDOW.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "WINDOWMONSTER 1.jpeg",
+      "filename" : "MONSTERWINDOW 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "WINDOWMONSTER 2.jpeg",
+      "filename" : "MONSTERWINDOW 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

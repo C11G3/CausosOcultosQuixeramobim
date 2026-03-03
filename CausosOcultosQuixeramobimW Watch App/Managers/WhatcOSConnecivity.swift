@@ -54,7 +54,7 @@ class watchOSConnectivity: NSObject, ObservableObject {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             self.receivedData = message
-            print("📩 Watch received message: \(message)")
+            print("Watch received message: \(message)")
         }
     }
 }
@@ -128,7 +128,7 @@ extension watchOSConnectivity: WCSessionDelegate {
         if isActivated {
             send(message: passData)
         } else {
-            print("⏳ Session not ready to iOS. Queuing login status.")
+            print("Session not ready to iOS. Queuing login status.")
             pendingMessages.append(passData)
         }
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "testeArteSala 1.png",
+      "filename" : "window.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "window 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "window 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

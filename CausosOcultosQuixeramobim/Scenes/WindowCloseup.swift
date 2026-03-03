@@ -22,8 +22,8 @@ class WindowCloseup: SKScene {
         
         if GameController.sheerd.window.parent == nil {
             GameController.sheerd.window.position.y = frame.midY
-            GameController.sheerd.window.position.x = frame.midX
-            GameController.sheerd.window.size = CGSize(width: 0.8, height: 0.8)
+            GameController.sheerd.window.position.x = frame.midX * 1.1
+            GameController.sheerd.window.size = CGSize(width: 0.8, height: 1)
             GameController.sheerd.window.alpha = 1.0
             GameController.sheerd.window.zPosition = 100
             addChild(GameController.sheerd.window)

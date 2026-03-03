@@ -15,6 +15,7 @@ struct GameView: View {
     @State var currentScene: Positions = .WINDOW
     @State var monsterPosition: Positions?
     @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
+    @State var currentHour: Int = 4
     var scenes: [SKScene]
     var scenesCloseUp: [SKScene]
     
@@ -34,24 +35,35 @@ struct GameView: View {
     
     var body: some View {
         if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer > 0 {
-            switch currentScene {
-            case .WINDOW:
-                ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
-                
-            case .ENTRANCE:
-                ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
-                
-            case .KITCHEN:
-                ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
-                
-            case .SHELF:
-                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
-                
-            case .NONE:
-                ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+            ZStack {
+                switch currentScene {
+                case .WINDOW:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .SHELF, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 0)
+                    
+                case .ENTRANCE:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .KITCHEN, destinationLeft: .SHELF, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 1)
+                    
+                case .KITCHEN:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .WINDOW, destinationLeft: .ENTRANCE, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 2)
+                    
+                case .SHELF:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .WINDOW, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+                    
+                case .NONE:
+                    ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, scenesCloseUp: scenesCloseUp, index: 3)
+                }
+                if !SceneManager.shared.isZoomed {
+                    VStack (alignment: .trailing) {
+                        HourIndicator(currentTime: $currentHour)
+                            .padding(.top, UIScreen.main.bounds.height * 0.1)
+                            .padding(.leading, UIScreen.main.bounds.width * 0.7)
+                        Spacer()
+                    }
+                }
             }
-        }
-        else {
+        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
+            VictoryView()
+        } else {
             GameOverView()
         }
         Text("")
@@ -65,6 +77,9 @@ struct GameView: View {
                 iOSConnectivity.shared.sendToWatch(passData: ["" : monsterPosition!.rawValue])
                 print(monsterPosition!)
             }
+            .onChange(of: GameController.sheerd.currentHour) {
+                self.currentHour = GameController.sheerd.currentHour
+            }
             .onReceive(iOSConnectivity.shared.$receivedData) { data in
                 baitMonsterPosition = data as? [String : String]
                 GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
@@ -73,6 +88,7 @@ struct GameView: View {
             .navigationBarBackButtonHidden(true)
     }
 }
+
 
 #Preview {
     GameView()

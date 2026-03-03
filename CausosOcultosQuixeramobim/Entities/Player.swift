@@ -51,6 +51,7 @@ class Player: SKSpriteNode {
     func buildBarricade(breach: Breach){
         let now = Date.now
         if now.timeIntervalSince(barricadeTimer) >= 2 && actualBarricades > 0{
+            SoundManager.instance.playSound(sound: .madeiraJanela)
             let barricade = Barricade()
             breach.addBarricades(barricade: barricade)
             barricadeTimer = Date.now

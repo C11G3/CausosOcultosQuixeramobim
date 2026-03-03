@@ -27,3 +27,10 @@ enum Positions: String {
     case ENTRANCE
     case NONE
 }
+
+enum Intro: String {
+    case one
+    case two
+    case three
+    case four
+}

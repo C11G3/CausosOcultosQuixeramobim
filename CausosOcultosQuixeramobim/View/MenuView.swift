@@ -22,7 +22,7 @@ struct MenuView: View {
                 .padding(.bottom, 20)
                 .font((.rubikFont(fontStyle: .title3)))
             
-            GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar")
+            GenericButtonRubikDirt(navigator: _navigator, route: .intro, text: "Jogar")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)

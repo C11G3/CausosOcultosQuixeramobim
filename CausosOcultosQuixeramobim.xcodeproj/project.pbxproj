@@ -40,6 +40,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C60344462F5786270082939C /* Exceptions for "CausosOcultosQuixeramobimW Watch App" folder in "CausosOcultosQuixeramobimW Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"CausosOcultosQuixeramobimW-Watch-App-Info.plist",
+			);
+			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
+		};
 		E18F46C92F50DAFC0020DC59 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobimW Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -51,8 +58,8 @@
 				Managers/SceneManager.swift,
 				Models/Enums.swift,
 				Models/Fonts.swift,
-				Resources/RubikDirt.ttf,
-				Resources/RubikDoodleShadow.ttf,
+				"Resources/RubikDirt-Regular.ttf",
+				"Resources/RubikDoodleShadow-Regular.ttf",
 			);
 			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
 		};
@@ -77,6 +84,9 @@
 		};
 		E1BCCAC72F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C60344462F5786270082939C /* Exceptions for "CausosOcultosQuixeramobimW Watch App" folder in "CausosOcultosQuixeramobimW Watch App" target */,
+			);
 			path = "CausosOcultosQuixeramobimW Watch App";
 			sourceTree = "<group>";
 		};
@@ -451,6 +461,7 @@
 				DEVELOPMENT_TEAM = LYS5H76F6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CausosOcultosQuixeramobimW-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = CausosOcultosQuixeramobimW;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = hissapinto.CausosOcultosQuixeramobim;
@@ -484,6 +495,7 @@
 				DEVELOPMENT_TEAM = LYS5H76F6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CausosOcultosQuixeramobimW-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = CausosOcultosQuixeramobimW;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = hissapinto.CausosOcultosQuixeramobim;

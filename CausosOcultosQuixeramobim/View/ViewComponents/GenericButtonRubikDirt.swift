@@ -19,7 +19,7 @@ struct GenericButtonRubikDirt: View {
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .foregroundStyle(.white))
-            .font(.custom("RubikDirt.ttf", size: 30))
+            .font(.custom("RubikDirt-Regular.ttf", size: 30))
             .onTapGesture {
                 navigator.clear()
                 navigator.navigateTo(route)

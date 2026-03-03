@@ -25,8 +25,21 @@ struct GameOverView: View {
                     GenericButtonRubikDoodle(destination: {MenuView()}, text: "Menu")
                     
                     Spacer()
-                    
-                    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar Novamente")
+                    Button {
+                        SceneManager.shared.isPlayerAlive = true
+                        GameController.sheerd.reset()
+                    } label: {
+                        Text("Jogar Novamente")
+                            .foregroundColor(.black)
+                            .font(.rubikFont(fontStyle: .title3))
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundStyle(.white)
+                            )
+                    }
+
+//                    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar Novamente")
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.5)
             }

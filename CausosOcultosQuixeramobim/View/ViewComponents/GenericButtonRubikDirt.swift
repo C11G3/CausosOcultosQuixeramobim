@@ -14,6 +14,7 @@ struct GenericButtonRubikDirt<Content: View>: View {
     var body: some View {
             NavigationLink {
                 destination
+                    .navigationBarBackButtonHidden(true)
             } label: {
                 Text(text)
                     .padding()

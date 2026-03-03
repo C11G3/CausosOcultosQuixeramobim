@@ -7,27 +7,24 @@
 
 import SwiftUI
 
-struct GenericButtonRubikDirt<Content: View>: View {
-    @ViewBuilder var destination: Content
+struct GenericButtonRubikDirt: View {
+    @Environment(ViewNavigator.self) var navigator: ViewNavigator
+    var route: Routes
     var text: String
     
     var body: some View {
-            NavigationLink {
-                destination
-                    .navigationBarBackButtonHidden(true)
-            } label: {
-                Text(text)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.white))
-                    .font(.custom("RubikDirt.ttf", size: 30))
+        Text(text)
+            .padding()
+            .foregroundColor(.black)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.white))
+            .font(.custom("RubikDirt.ttf", size: 30))
+            .onTapGesture {
+                navigator.clear()
+                navigator.navigateTo(route)
+                SceneManager.shared.isPlayerAlive = true
+                GameController.sheerd.reset()
             }
-            .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar")
 }

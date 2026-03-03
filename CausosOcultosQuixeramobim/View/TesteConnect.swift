@@ -22,18 +22,16 @@ struct TesteConnect: View {
                 .frame(width: 200)
         }
         Text("Recieved message: \(currentMonsterPosition ?? [ "" : "NONE"])")
-
         
-        .onAppear() {
-            // Activating the WCSession
-            iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
-        }
-        .onReceive(iOSConnectivity.shared.$receivedData) { data in
-            currentMonsterPosition = data as? [String : String]
-        }
         
+            .onAppear() {
+                // Activating the WCSession
+                iOSConnectivity.shared.session(iOSConnectivity.shared.session, activationDidCompleteWith: .activated, error: ValidationError.unknown)
+            }
+            .onReceive(iOSConnectivity.shared.$receivedData) { data in
+                currentMonsterPosition = data as? [String : String]
+            }
     }
-
 }
 
 #Preview {

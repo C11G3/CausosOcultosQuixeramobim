@@ -8,47 +8,28 @@
 import SwiftUI
 
 struct GameOverView: View {
+    @Environment(ViewNavigator.self) var navigator: ViewNavigator
+    
     var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Você foi")
-                    .foregroundStyle(.white)
-                    .frame(width: UIScreen.main.bounds.width * 0.3)
-                    .font((.rubikFont(fontStyle: .title3)))
-                
-                Text("Derrotado")
-                    .foregroundStyle(.white)
-                    .padding(.bottom, 20)
-                    .font((.rubikFont(fontStyle: .title3)))
-                
-                HStack {
-                    GenericButtonRubikDoodle(destination: {MenuView()}, text: "Menu")
-                    
-                    Spacer()
-                    Button {
-                        SceneManager.shared.isPlayerAlive = true
-                        GameController.sheerd.reset()
-                    } label: {
-                        Text("Jogar Novamente")
-                            .foregroundColor(.black)
-                            .font(.rubikFont(fontStyle: .title3))
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .foregroundStyle(.white)
-                            )
-                    }
-
-//                    GenericButtonRubikDirt(destination: {GameView()}, text: "Jogar Novamente")
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.5)
+        VStack {
+            Text("Você foi")
+                .foregroundStyle(.white)
+                .frame(width: UIScreen.main.bounds.width * 0.3)
+                .font((.rubikFont(fontStyle: .title3)))
+            
+            Text("Derrotado")
+                .foregroundStyle(.white)
+                .padding(.bottom, 20)
+                .font((.rubikFont(fontStyle: .title3)))
+            
+            HStack {
+                GenericButtonRubikDoodle(navigator: _navigator, route: .menu, text: "Menu")
+                Spacer()
+                GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black)
+            .frame(width: UIScreen.main.bounds.width * 0.5)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
     }
-}
-
-#Preview {
-    GameOverView()
 }

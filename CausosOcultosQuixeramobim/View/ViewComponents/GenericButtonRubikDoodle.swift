@@ -16,10 +16,11 @@ struct GenericButtonRubikDoodle: View {
         Text(text)
             .foregroundColor(.white)
             .padding()
+            .padding(.horizontal, 60)
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.white, lineWidth: 2))
-            .font((.rubikFont(fontStyle: .title3)))
+            .font(.custom("RubikDoodleShadow-Regular", size: 25))
             .onTapGesture {
                 navigator.clear()
                 navigator.navigateTo(route)

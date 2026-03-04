@@ -49,7 +49,7 @@ enum Routes {
         case .defeat:
             GameOverView()
         case .intro:
-            TesteConnect()
+            IntroView()
         }
     }
 }

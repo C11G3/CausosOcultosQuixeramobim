@@ -61,6 +61,7 @@ struct GameView: View {
                     SoundManager.instance.deleteAllSounds()
                     SoundManager.instance.playSound(sound: .opening)
                 }
+                .ignoresSafeArea()
         } else {
             GameOverView(navigator: _navigator)
                 .onAppear{
@@ -103,10 +104,12 @@ struct GameView: View {
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
             .navigationBarBackButtonHidden(true)
+            .background(.black)
     }
 }
 
 
 #Preview {
     GameView()
+        .environment(ViewNavigator())
 }

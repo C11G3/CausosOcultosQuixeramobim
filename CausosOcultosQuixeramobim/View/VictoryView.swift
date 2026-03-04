@@ -7,32 +7,33 @@
 
 import Foundation
 import SwiftUI
+import SpriteKit
 
 struct VictoryView: View {
     @Environment(ViewNavigator.self) var navigator: ViewNavigator
     
     var body: some View {
-        VStack {
-            Text("capelobo foi")
-                .foregroundStyle(.white)
-                .frame(width: UIScreen.main.bounds.width * 0.3)
-                .font((.rubikFont(fontStyle: .title3)))
+        ZStack {
+            SpriteView(scene: Victory())
+                .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                .frame(height: UIScreen.main.bounds.height * 1.06)
+                .ignoresSafeArea()
             
-            Text("Derrotado")
-                .foregroundStyle(.white)
-                .padding(.bottom, 20)
-                .font((.rubikFont(fontStyle: .title3)))
-            
-            HStack {
-                GenericButtonRubikDoodle(navigator: _navigator, route: .menu, text: "Menu")
-                
+            VStack {
                 Spacer()
                 
-                GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
+                HStack(spacing: UIScreen.main.bounds.width * 0.1) {
+                    GenericButtonRubikDoodle(navigator: _navigator, route: .menu, text: "Menu")
+                    
+                    GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
+                }
             }
-            .frame(width: UIScreen.main.bounds.width * 0.5)
+            .padding(.bottom, UIScreen.main.bounds.height * 0.14)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
     }
+}
+
+#Preview {
+    VictoryView()
+        .environment(ViewNavigator())
 }

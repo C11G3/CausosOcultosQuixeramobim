@@ -52,8 +52,8 @@
 				Managers/SoundManager.swift,
 				Models/Enums.swift,
 				Models/Fonts.swift,
-				Resources/RubikDirt.ttf,
-				Resources/RubikDoodleShadow.ttf,
+				"Resources/RubikDirt-Regular.ttf",
+				"Resources/RubikDoodleShadow-Regular.ttf",
 			);
 			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
 		};
@@ -452,6 +452,7 @@
 				DEVELOPMENT_TEAM = LYS5H76F6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CausosOcultosQuixeramobimW-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = CausosOcultosQuixeramobimW;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = hissapinto.CausosOcultosQuixeramobim;
@@ -485,6 +486,7 @@
 				DEVELOPMENT_TEAM = LYS5H76F6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CausosOcultosQuixeramobimW-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = CausosOcultosQuixeramobimW;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = hissapinto.CausosOcultosQuixeramobim;

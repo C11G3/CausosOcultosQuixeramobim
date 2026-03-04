@@ -14,15 +14,15 @@ struct MenuView: View {
         VStack {
             Text("Causos Ocultos")
                 .foregroundStyle(.white)
-                .frame(width: UIScreen.main.bounds.width * 0.3)
-                .font((.rubikFont(fontStyle: .title3)))
+                .frame(width: UIScreen.main.bounds.width * 0.4)
+                .font(.custom("RubikDirt-Regular", size: 65))
             
             Text("Quixeramobim")
                 .foregroundStyle(.white)
                 .padding(.bottom, 20)
-                .font((.rubikFont(fontStyle: .title3)))
+                .font(.custom("RubikDoodleShadow-Regular", size: 35))
             
-            GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar")
+            GenericButtonRubikDirt(navigator: _navigator, route: .intro, text: "Jogar")
         }
         .onAppear{
             SoundManager.instance.playSound(sound: .opening)
@@ -30,4 +30,9 @@ struct MenuView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
     }
+}
+
+#Preview {
+    MenuView()
+        .environment(ViewNavigator())
 }

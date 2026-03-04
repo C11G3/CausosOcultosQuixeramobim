@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>RubikDirt-Regular.ttf</string>
 		<string>RubikDoodleShadow-Regular.ttf</string>
+		<string>RubikDirt-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

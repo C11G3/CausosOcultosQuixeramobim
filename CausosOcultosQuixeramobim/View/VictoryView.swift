@@ -14,23 +14,21 @@ struct VictoryView: View {
     
     var body: some View {
         ZStack {
+            SpriteView(scene: Victory())
+                .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                .frame(height: UIScreen.main.bounds.height * 1.06)
+                .ignoresSafeArea()
+            
             VStack {
-                SpriteView(scene: Victory())
-                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
-                    .frame(height: UIScreen.main.bounds.height * 1.1)
-                    .ignoresSafeArea()
-                HStack {
+                Spacer()
+                
+                HStack(spacing: UIScreen.main.bounds.width * 0.1) {
                     GenericButtonRubikDoodle(navigator: _navigator, route: .menu, text: "Menu")
-                    
-                    Spacer()
                     
                     GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.5)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black)
-            .ignoresSafeArea()
+            .padding(.bottom, UIScreen.main.bounds.height * 0.14)
         }
     }
 }

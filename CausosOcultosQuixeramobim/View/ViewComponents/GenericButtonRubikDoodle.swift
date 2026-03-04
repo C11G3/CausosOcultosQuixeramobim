@@ -16,6 +16,7 @@ struct GenericButtonRubikDoodle: View {
         Text(text)
             .foregroundColor(.white)
             .padding()
+            .padding(.horizontal, 60)
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.white, lineWidth: 2))

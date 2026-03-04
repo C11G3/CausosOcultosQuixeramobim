@@ -1,5 +1,5 @@
 //
-//  Victory.swift
+//  IntroFour.swift
 //  CausosOcultosQuixeramobim
 //
 //  Created by Isabela Hissa Pinto on 03/03/26.
@@ -7,8 +7,8 @@
 
 import SpriteKit
 
-class Victory: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "telaVitoria")
+class IntroSeven: SKScene {
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "seven")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size

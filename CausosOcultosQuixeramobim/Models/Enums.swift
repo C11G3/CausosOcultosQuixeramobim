@@ -27,3 +27,29 @@ enum Positions: String {
     case ENTRANCE
     case NONE
 }
+
+// colocar nomes audios aqui, no enum.
+enum SoundTypes: String {
+    case ambientacaoNoite
+    case ataqueCerto
+    case ataqueErrado
+    case batimentoCardiaco
+    case batimentoLento
+    case caminhGrama
+    case capeloboOrigin
+    case capeloboProximo
+    case chamarCapelobo
+    case cigarra
+    case grilosAmbiente
+    case loboUivando
+    case madeiraDegradando
+    case madeiraJanela
+    case mudancaCamera
+    case pisoRangendo
+    case pagina
+    case passos
+    case playerMorrendo
+    case radio
+    case vento
+    case opening
+}

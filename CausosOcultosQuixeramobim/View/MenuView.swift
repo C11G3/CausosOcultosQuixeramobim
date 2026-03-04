@@ -24,6 +24,9 @@ struct MenuView: View {
             
             GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar")
         }
+        .onAppear{
+            SoundManager.instance.playSound(sound: .opening)
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
     }

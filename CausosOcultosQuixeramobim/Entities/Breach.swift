@@ -53,6 +53,7 @@ class Breach: SKSpriteNode {
     ///
     func addBarricades(barricade :Barricade){
         if barricades.count < barricadeMax {
+            SoundManager.instance.playSound(sound: .madeiraJanela)
             for i in 0..<barricades.count {
                 if barricades[i].getHealth() <= 0 {
                     barricades[i] = barricade

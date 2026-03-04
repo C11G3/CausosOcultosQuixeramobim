@@ -57,11 +57,24 @@ struct GameView: View {
             }
         } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
             VictoryView(navigator: _navigator)
+                .onAppear{
+                    SoundManager.instance.deleteAllSounds()
+                    SoundManager.instance.playSound(sound: .opening)
+                }
         } else {
             GameOverView(navigator: _navigator)
+                .onAppear{
+                    SoundManager.instance.deleteAllSounds()
+                    SoundManager.instance.playSound(sound: .capeloboOrigin, volume: 0.3)
+                    SoundManager.instance.playSound(sound: .opening)
+
+                }
         }
         Text("")
             .onAppear() {
+                SoundManager.instance.deleteAllSounds()
+                SoundManager.instance.playSound(sound: .vento, volume: 0.3)
+                SoundManager.instance.playSound(sound: .grilosAmbiente, volume: 0.005)
                 GameController.sheerd.startTimer()
             }
             .onChange(of: GameController.sheerd.enemy.actualPosition) {
@@ -71,6 +84,18 @@ struct GameView: View {
             }
             .onChange(of: GameController.sheerd.currentHour) {
                 self.currentHour = GameController.sheerd.currentHour
+            }
+            .onChange(of: currentScene) {
+                SoundManager.instance.playSound(sound: .passos, volume: 0.5)
+            }
+            .onChange(of: SceneManager.shared.isZoomed) {
+                SoundManager.instance.playSound(sound: .passos, volume: 0.5)
+            }
+            .onChange(of: SceneManager.shared.isPlayerAlive){
+                if SceneManager.shared.isPlayerAlive {
+                    SoundManager.instance.playSound(sound: .vento, volume: 0.3)
+                    SoundManager.instance.playSound(sound: .grilosAmbiente, volume: 0.005)
+                }
             }
             .onReceive(iOSConnectivity.shared.$receivedData) { data in
                 baitMonsterPosition = data as? [String : String]

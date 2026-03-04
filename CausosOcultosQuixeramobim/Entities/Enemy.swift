@@ -69,7 +69,7 @@ class Enemy: SKSpriteNode {
                 default: break
                 }
             }
-            print(actualPosition)
+//            print(actualPosition)
         }
     }
     
@@ -92,7 +92,10 @@ class Enemy: SKSpriteNode {
         }
         else {
             actualState = .ATTACKING
+            SoundManager.instance.playSound(sound: .capeloboProximo, volume: 0.1)
+            return
         }
+        SoundManager.instance.playSound(sound: .caminhGrama, volume: 0.2)
     }
     
     private func stringToPosition(position: [String: String]) -> Positions {
@@ -135,9 +138,8 @@ class Enemy: SKSpriteNode {
         }
         if breach.getNumOfBarricade() == 0 {
             SceneManager.shared.isPlayerAlive = false
-            
+            SoundManager.instance.deleteSound(sound: .vento)
         }
-        
     }
     
     /// Function that applies effects to the enemy.

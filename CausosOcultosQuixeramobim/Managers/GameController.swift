@@ -23,7 +23,8 @@ class GameController {
     var currentHour = 0
     
     func startTimer() {
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            print(self.countdownTimer)
             if self.countdownTimer > 0 {
                 self.countdownTimer -= 1
                 switch self.countdownTimer {
@@ -38,7 +39,6 @@ class GameController {
                 default:
                     return
                 }
-                
             } else {
                 timer.invalidate()
             }
@@ -66,7 +66,7 @@ class GameController {
         window.reset()
         kitchenWindow.reset()
         door.reset()
-        countdownTimer = 30
+        countdownTimer = 300
         currentHour = 0
     }
 }

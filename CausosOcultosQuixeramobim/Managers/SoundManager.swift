@@ -9,43 +9,13 @@ import SwiftUI
 import AVFoundation
 
 @Observable class SoundManager {
-    var playingSound: AVAudioPlayer?
-    
-    init(playingSound: AVAudioPlayer? = nil) {
-        self.playingSound = playingSound
-    }
+    private var playingSounds: [String : AVAudioPlayer] = [:]
     
     //singleton para nao precisar inicializar em cada view
     static let instance = SoundManager()
     
-    // colocar nomes audios aqui, no enum.
-    enum soundTypes: String {
-        case ambientacaoNoite
-        case ataqueCerto
-        case ataqueErrado
-        case batimentoCardiaco
-        case batimentoLento
-        case caminhGrama
-        case capeloboOrigin
-        case capeloboProximo
-        case chamarCapelobo
-        case cigarra
-        case grilosAmbiente
-        case loboUivando
-        case madeiraDegradando
-        case madeiraJanela
-        case mudancaCamera
-        case pisoRangendo
-        case pagina
-        case passos
-        case playerMorrendo
-        case radio
-        case vento
-        case opening
-    }
-    
-    func playSound(sound: soundTypes) {
-        
+    func playSound(sound: SoundTypes, volume: Float = 0.1) {
+
         guard let path = Bundle.main.path(forResource: sound.rawValue, ofType: "mp3") else {
             print("The sound path was not created")
             return
@@ -54,14 +24,22 @@ import AVFoundation
         let url = URL(filePath: path)
         
         do {
-            playingSound = try AVAudioPlayer(contentsOf: url)
-            playingSound?.volume = 0.1
-            playingSound?.play()
+            let playingSound = try AVAudioPlayer(contentsOf: url)
+            playingSound.volume = volume
+            playingSound.play()
+            let audio = [sound.rawValue : playingSound]
+            playingSounds.merge(audio){ (current, new) in return new}
         }
         catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
-        
+    }
+    
+    func deleteSound(sound: SoundTypes){
+        playingSounds.removeValue(forKey: sound.rawValue)
+    }
+    
+    func deleteAllSounds(){
+        playingSounds.removeAll()
     }
 }
-

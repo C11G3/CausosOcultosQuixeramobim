@@ -25,6 +25,7 @@ struct GenericButtonRubikDirt: View {
                 navigator.navigateTo(route)
                 SceneManager.shared.isPlayerAlive = true
                 GameController.sheerd.reset()
+                SoundManager.instance.deleteAllSounds()
             }
     }
 }

@@ -23,6 +23,7 @@ struct GenericButtonRubikDoodle: View {
             .onTapGesture {
                 navigator.clear()
                 navigator.navigateTo(route)
+                SoundManager.instance.deleteAllSounds()
             }
     }
 }

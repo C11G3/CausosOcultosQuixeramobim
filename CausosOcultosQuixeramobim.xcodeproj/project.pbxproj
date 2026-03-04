@@ -40,13 +40,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C60344462F5786270082939C /* Exceptions for "CausosOcultosQuixeramobimW Watch App" folder in "CausosOcultosQuixeramobimW Watch App" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"CausosOcultosQuixeramobimW-Watch-App-Info.plist",
-			);
-			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
-		};
 		E18F46C92F50DAFC0020DC59 /* Exceptions for "CausosOcultosQuixeramobim" folder in "CausosOcultosQuixeramobimW Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -84,9 +77,6 @@
 		};
 		E1BCCAC72F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C60344462F5786270082939C /* Exceptions for "CausosOcultosQuixeramobimW Watch App" folder in "CausosOcultosQuixeramobimW Watch App" target */,
-			);
 			path = "CausosOcultosQuixeramobimW Watch App";
 			sourceTree = "<group>";
 		};

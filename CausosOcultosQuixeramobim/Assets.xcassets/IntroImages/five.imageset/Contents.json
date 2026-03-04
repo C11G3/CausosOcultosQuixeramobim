@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "telaHistória.png",
+      "filename" : "telaHistória5 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "telaHistória5.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "telaHistória5 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

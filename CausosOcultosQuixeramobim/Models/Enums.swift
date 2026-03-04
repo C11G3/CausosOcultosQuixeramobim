@@ -53,6 +53,7 @@ enum SoundTypes: String {
     case vento
     case opening
 }
+
 enum Intro: String {
     case one
     case two
@@ -61,4 +62,5 @@ enum Intro: String {
     case five
     case six
     case seven
+    case eight
 }

@@ -130,19 +130,25 @@ struct IntroView: View {
                 
                 HStack {
                     Spacer()
-                    VStack{
+                    VStack {
+                        Spacer()
                         Button {
                             navigator.clear()
                             navigator.navigateTo(.game)
                             SceneManager.shared.isPlayerAlive = true
                             GameController.sheerd.reset()
                         } label: {
-                            Image("chevronRight")
-                                .resizable()
-                                .frame(width: 70, height: 70)
+                            Text("Começar")
+                                .padding()
+                                .foregroundColor(.black)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundStyle(.white))
+                                .font(.custom("RubikDirt-Regular", size: 25))
                         }
                     }
                 }
+                .padding(.bottom, 40)
             }
         }
     }

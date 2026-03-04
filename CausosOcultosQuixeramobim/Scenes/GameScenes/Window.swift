@@ -15,6 +15,7 @@ import SwiftUI
 class Window: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "windowRoom")
     var barricades: [Barricade] = []
+    var wasEnemyHere = false
     
     // Creates the objects
     override func didMove(to view: SKView) {
@@ -33,9 +34,17 @@ class Window: SKScene {
             GameController.sheerd.window.size.width = frame.size.width
             GameController.sheerd.window.size.height = frame.size.height
             GameController.sheerd.window.alpha = 1.0
-            GameController.sheerd.window.zPosition = 100
+            GameController.sheerd.window.zPosition = 98
             
             addChild(GameController.sheerd.window)
+        }
+        
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
+            GameController.sheerd.enemy.position.y = frame.midY
+            GameController.sheerd.enemy.position.x = frame.midX
+            GameController.sheerd.enemy.zPosition = 99
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
         }
     }
     
@@ -62,13 +71,16 @@ class Window: SKScene {
             GameController.sheerd.window.size.width = frame.size.width * 1.4
             GameController.sheerd.window.size.height = frame.size.height * 1.4
             GameController.sheerd.window.scaleBarricades(scale: 1.0)
-        } else{
+        } else {
             backGround.size.width = frame.width
             backGround.size.height = frame.height
             GameController.sheerd.window.size.width = frame.size.width
             GameController.sheerd.window.size.height = frame.size.height
             GameController.sheerd.window.scaleBarricades(scale: 0.7)
-            
+        }
+        
+        if GameController.sheerd.enemy.actualPosition != .ENTRANCE && wasEnemyHere == true {
+            GameController.sheerd.enemy.removeFromParent()
         }
     }
 }

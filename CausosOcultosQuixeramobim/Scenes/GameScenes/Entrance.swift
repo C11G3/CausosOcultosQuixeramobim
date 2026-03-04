@@ -15,7 +15,8 @@ class Entrance: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "entrance")
     var door: SKSpriteNode = SKSpriteNode(imageNamed: "door")
     var barricades: [Barricade] = []
-    
+    var wasEnemyHere = false
+
     override func didMove(to view: SKView) {
         backGround.size = frame.size
         backGround.position.x = frame.midX
@@ -32,9 +33,17 @@ class Entrance: SKScene {
             GameController.sheerd.door.size.width = frame.size.width
             GameController.sheerd.door.size.height = frame.size.height
             GameController.sheerd.door.alpha = 1.0
-            GameController.sheerd.door.zPosition = 100
+            GameController.sheerd.door.zPosition = 98
             
             addChild(GameController.sheerd.door)
+        }
+        
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
+            GameController.sheerd.enemy.position.y = frame.midY
+            GameController.sheerd.enemy.position.x = frame.midX
+            GameController.sheerd.enemy.zPosition = 99
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
         }
     }
     
@@ -69,6 +78,10 @@ class Entrance: SKScene {
             GameController.sheerd.door.size.height = frame.size.height
             GameController.sheerd.door.scaleBarricades(scale: 0.7)
 
+        }
+        
+        if GameController.sheerd.enemy.actualPosition != .ENTRANCE && wasEnemyHere == true {
+            GameController.sheerd.enemy.removeFromParent()
         }
     }
     

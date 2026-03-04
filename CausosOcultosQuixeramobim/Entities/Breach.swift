@@ -75,6 +75,7 @@ class Breach: SKSpriteNode {
                 barricades[i].position.x = 0
                 barricades[i].position.y = 0 + (CGFloat(i) * 0.1)
                 barricades[i].size = CGSize(width: 0.6, height: 0.25)
+                barricades[i].zPosition = 100
                 self.addChild(barricades[i])
             }
         }

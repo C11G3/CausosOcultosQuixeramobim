@@ -14,6 +14,7 @@ import SpriteKit
 class Kitchen: SKScene {
     var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "kitchen")
     var barricades: [Barricade] = []
+    var wasEnemyHere = false
 
     // Creates the objects
     override func didMove(to view: SKView) {
@@ -32,9 +33,17 @@ class Kitchen: SKScene {
             GameController.sheerd.kitchenWindow.size.width = frame.size.width
             GameController.sheerd.kitchenWindow.size.height = frame.size.height
             GameController.sheerd.kitchenWindow.alpha = 1.0
-            GameController.sheerd.kitchenWindow.zPosition = 100
+            GameController.sheerd.kitchenWindow.zPosition = 98
             
             addChild(GameController.sheerd.kitchenWindow)
+        }
+        
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
+            GameController.sheerd.enemy.position.y = frame.midY
+            GameController.sheerd.enemy.position.x = frame.midX
+            GameController.sheerd.enemy.zPosition = 99
+            addChild(GameController.sheerd.enemy)
+            wasEnemyHere = true
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -60,13 +69,16 @@ class Kitchen: SKScene {
             GameController.sheerd.kitchenWindow.size.width = frame.size.width * 1.4
             GameController.sheerd.kitchenWindow.size.height = frame.size.height * 1.4
             GameController.sheerd.kitchenWindow.scaleBarricades(scale: 1.0)
-        } else{
+        } else {
             backGround.size.width = frame.width
             backGround.size.height = frame.height
             GameController.sheerd.kitchenWindow.size.width = frame.size.width
             GameController.sheerd.kitchenWindow.size.height = frame.size.height
             GameController.sheerd.kitchenWindow.scaleBarricades(scale: 0.7)
-            
+        }
+        
+        if GameController.sheerd.enemy.actualPosition != .ENTRANCE && wasEnemyHere == true {
+            GameController.sheerd.enemy.removeFromParent()
         }
     }
 }

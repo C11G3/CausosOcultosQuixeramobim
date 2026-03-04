@@ -25,6 +25,7 @@ class Shelf: SKScene {
             addChild(backGround)
         }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
@@ -40,6 +41,7 @@ class Shelf: SKScene {
             SceneManager.shared.isZoomed = true
         }
     }
+    
     override func update(_ currentTime: TimeInterval) {
         GameController.sheerd.update()
     }

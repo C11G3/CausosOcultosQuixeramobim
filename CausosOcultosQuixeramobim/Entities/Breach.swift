@@ -24,7 +24,7 @@ class Breach: SKSpriteNode {
     init(texture: SKTexture?, actualPosition: Positions, size: CGSize = CGSize(width: 852, height: 393)) {
         super.init(texture: texture, color: UIColor.black, size: size)
         self.actualPosition = actualPosition
-            
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +53,13 @@ class Breach: SKSpriteNode {
     ///
     func addBarricades(barricade :Barricade){
         if barricades.count < barricadeMax {
+            for i in 0..<barricades.count {
+                if barricades[i].getHealth() <= 0 {
+                    barricades[i] = barricade
+                    addChildBarricades()
+                    return
+                }
+            }
             barricades.append(barricade)
             addChildBarricades()
         }
@@ -65,13 +72,19 @@ class Breach: SKSpriteNode {
                 barricades[i].anchorPoint.x = 0.5
                 barricades[i].anchorPoint.y = 0.5
                 barricades[i].position.x = 0
-                barricades[i].position.y = 0 + (CGFloat(i) * 0.1) - 0.15
+                barricades[i].position.y = 0 + (CGFloat(i) * 0.1)
                 barricades[i].size = CGSize(width: 0.6, height: 0.25)
                 self.addChild(barricades[i])
             }
         }
     }
     
+    func scaleBarricades(scale: CGFloat) {
+        for i in 0..<barricades.count {
+            barricades[i].setScale(scale)
+        }
+    }
+
     func getNumOfBarricade() -> Int{
         return barricades.count
     }
@@ -89,5 +102,10 @@ class Breach: SKSpriteNode {
         actualPosition = .NONE
         barricades = []
         barricadeMax = 4
+        self.removeAllChildren()
+    }
+    
+    func getBarricades() -> [Barricade]{
+        return barricades
     }
 }

@@ -12,7 +12,8 @@ struct HourIndicator: View {
     
     var body: some View {
         Text(String(currentTime) + "AM")
-            .font(.title)
+            .font(.custom("RubikDirt-Regular", size: 24))
+            .foregroundStyle(.white)
             .bold()
     }
 }

@@ -20,17 +20,16 @@ struct ScenePositions: View {
     let destinationRight: Positions
     let destinationLeft: Positions
     let scenes: [SKScene]
-    var scenesCloseUp: [SKScene]
     let index: Int
     
     var body: some View {
-        if SceneManager.shared.isZoomed {
-            ZStack {
-                SpriteView(scene: scenesCloseUp[index])
-                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.25)))
-                    .frame(height: UIScreen.main.bounds.height * 1.1)
-                    .ignoresSafeArea()
-                
+        ZStack {
+            SpriteView(scene: scenes[index])
+                .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.087)))
+                .frame(height: UIScreen.main.bounds.height * 1)
+                .ignoresSafeArea()
+            
+            if SceneManager.shared.isZoomed {
                 HStack {
                     Button {
                         SceneManager.shared.isZoomed = false
@@ -43,13 +42,8 @@ struct ScenePositions: View {
                     .padding(.top, 50)
                 }
             }
-        } else {
-            ZStack {
-                SpriteView(scene: scenes[index])
-                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.087)))
-                    .frame(height: UIScreen.main.bounds.height * 1)
-                    .ignoresSafeArea()
-                
+            
+            if !SceneManager.shared.isZoomed{
                 HStack {
                     ArrowButton(sceneState: $currentScene, symbolDirection: true, destination: destinationLeft)
                     

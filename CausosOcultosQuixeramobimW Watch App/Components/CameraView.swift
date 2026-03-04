@@ -37,7 +37,7 @@ struct CameraView: View {
                         .padding(5)
                         .overlay(
                             Text("Atrair")
-                                .font(.caption)
+                                .font(.custom("RubikDirt-Regular", size: 12))
                         )
                     
                 }

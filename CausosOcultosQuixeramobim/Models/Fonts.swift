@@ -13,23 +13,23 @@ import UIKit
 
 
 extension Font {
-    static func rubikFont(fontType: String = "RubikDirt", fontStyle: Font.TextStyle = .body) -> Font {
-        if fontType.contains("RubikDirt")  {
-            return Font.custom("RubikDirt", size: fontStyle.size)
+    static func rubikFont(fontType: String = "RubikDirt-Regular", fontStyle: Font.TextStyle = .body) -> Font {
+        if fontType.contains("RubikDirt-Regular")  {
+            return Font.custom("RubikDirt-Regular", size: fontStyle.size)
         } else {
-            return Font.custom("RubikDoodleShadow", size: fontStyle.size)
+            return Font.custom("RubikDoodleShadow-Regular", size: fontStyle.size)
         }
     }
 }
 
 
 extension UIFont {
-    static func rubikFont(fontType: String = "RubikDirt", fontStyle: Font.TextStyle = .body) -> UIFont {
+    static func rubikFont(fontType: String = "RubikDirt-Regular", fontStyle: Font.TextStyle = .body) -> UIFont {
         
-        if fontType.contains("RubikDirt") {
-            return UIFont(name: "RubikDirt", size: fontStyle.size) ?? UIFont.systemFont(ofSize: fontStyle.size) //colocar optional
+        if fontType.contains("RubikDirt-Regular") {
+            return UIFont(name: "RubikDirt-Regular", size: fontStyle.size) ?? UIFont.systemFont(ofSize: fontStyle.size) //colocar optional
         } else {
-            return UIFont(name: "RubikDoodleShadow", size: fontStyle.size) ?? UIFont.systemFont(ofSize: fontStyle.size)
+            return UIFont(name: "RubikDoodleShadow-Regular", size: fontStyle.size) ?? UIFont.systemFont(ofSize: fontStyle.size)
         }
     }
 }

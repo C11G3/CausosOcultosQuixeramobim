@@ -64,6 +64,7 @@ struct GameView: View {
             }
         } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
             VictoryView(navigator: _navigator)
+                .ignoresSafeArea()
         } else {
             GameOverView(navigator: _navigator)
         }
@@ -87,10 +88,12 @@ struct GameView: View {
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
             .navigationBarBackButtonHidden(true)
+            .background(.black)
     }
 }
 
 
 #Preview {
     GameView()
+        .environment(ViewNavigator())
 }

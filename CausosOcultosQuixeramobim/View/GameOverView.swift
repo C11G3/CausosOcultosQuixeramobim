@@ -24,7 +24,9 @@ struct GameOverView: View {
             
             HStack {
                 GenericButtonRubikDoodle(navigator: _navigator, route: .menu, text: "Menu")
+                
                 Spacer()
+                
                 GenericButtonRubikDirt(navigator: _navigator, route: .game, text: "Jogar Novamente")
             }
             .frame(width: UIScreen.main.bounds.width * 0.5)
@@ -32,4 +34,9 @@ struct GameOverView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
     }
+}
+
+#Preview {
+    GameOverView()
+        .environment(ViewNavigator())
 }

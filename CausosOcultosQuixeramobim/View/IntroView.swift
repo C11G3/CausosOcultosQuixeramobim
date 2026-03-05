@@ -131,10 +131,5 @@ struct IntroView: View {
                 }
             }
         }
-        
-        Text("")
-            .onAppear{
-                SoundManager.instance.playSound(sound: .opening)
-            }
     }
 }

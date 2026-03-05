@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GenericButtonRubikDirt: View {
+struct GenericButtonRubikDirtMenu: View {
     @Environment(ViewNavigator.self) var navigator: ViewNavigator
     var route: Routes
     var text: String
@@ -25,7 +25,6 @@ struct GenericButtonRubikDirt: View {
                 navigator.navigateTo(route)
                 SceneManager.shared.isPlayerAlive = true
                 GameController.sheerd.reset()
-                SoundManager.instance.deleteAllSounds()
             }
     }
 }

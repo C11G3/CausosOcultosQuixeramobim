@@ -11,7 +11,7 @@ Jogo de suspense folclórico para <b>iOS + WatchOS</b> com integração entre di
 
 </div>
 
-![image](url da imagem)
+<img width="3197" height="1475" alt="capelobo" src="https://github.com/user-attachments/assets/8a5d9006-7325-42b9-8c22-00fed226ce3c" />
 
 ---
 ## Índice

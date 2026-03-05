@@ -22,7 +22,7 @@ struct MenuView: View {
                 .padding(.bottom, 20)
                 .font(.custom("RubikDoodleShadow-Regular", size: 35))
             
-            GenericButtonRubikDirt(navigator: _navigator, route: .intro, text: "Jogar")
+            GenericButtonRubikDirtMenu(navigator: _navigator, route: .intro, text: "Jogar")
         }
         .onAppear{
             SoundManager.instance.playSound(sound: .opening)

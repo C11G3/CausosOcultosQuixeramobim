@@ -20,7 +20,7 @@ class GameController {
     var door = Breach(texture: SKTexture(imageNamed: "door"), actualPosition: .ENTRANCE)
     
     var countdownTimer = 300
-    var currentHour = 0
+    var currentHour = 2
     
     var currentBarricade: Int = 3
     var putBarricade: Bool = false
@@ -72,6 +72,6 @@ class GameController {
         kitchenWindow.reset()
         door.reset()
         countdownTimer = 300
-        currentHour = 0
+        currentHour = 2
     }
 }

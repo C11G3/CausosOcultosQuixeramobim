@@ -27,7 +27,7 @@ struct ProgressBar: View {
                 .animation(.linear(duration: duration), value: progress)
         }
         .frame(width: 35, height: 35)
-        .padding()
+        //.padding()
         .onAppear {
             progress = 1.0
         }

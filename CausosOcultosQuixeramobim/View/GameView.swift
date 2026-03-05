@@ -16,7 +16,7 @@ struct GameView: View {
     @State var currentScene: Positions = .WINDOW
     @State var monsterPosition: Positions?
     @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
-    @State var currentHour: Int = 4
+    @State var currentHour: Int = 2
     @State var barricadeCD: Bool = false
     var scenes: [SKScene]
     
@@ -116,7 +116,7 @@ struct GameView: View {
             }
             .onChange(of: GameController.sheerd.putBarricade) {
                 barricadeCD.toggle()
-                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
+                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
                     barricadeCD.toggle()
                 }
             }

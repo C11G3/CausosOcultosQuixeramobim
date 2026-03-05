@@ -46,11 +46,13 @@ struct CameraView: View {
                             )
                     }
                     .buttonStyle(.plain)
+                  
                 }
                 .padding(.horizontal, 15)
                 
                 Spacer()
             }
+            
         }
     }
     

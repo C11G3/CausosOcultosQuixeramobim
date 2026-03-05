@@ -35,6 +35,8 @@ struct CameraView: View {
                     Button {
                         print(scene)
                         watchOSConnectivity.shared.sendApplicationContext(data: ["" : monsterPositoon])
+                        WKInterfaceDevice.current()
+                            .play(.click)
                     } label: {
                         RoundedRectangle(cornerRadius: 30)
                             .frame(width:60, height:20)

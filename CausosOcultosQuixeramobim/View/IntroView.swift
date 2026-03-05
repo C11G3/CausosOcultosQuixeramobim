@@ -14,7 +14,7 @@ struct IntroView: View {
     var scenes: [SKScene]
     
     init() {
-        let tempScenes:  [SKScene] = [IntroOne(), IntroTwo(), IntroThree(), IntroFour(), IntroFive(), IntroSix(), IntroSeven()]
+        let tempScenes:  [SKScene] = [IntroOne(), IntroTwo(), IntroThree(), IntroFour(), IntroFive(), IntroSix(), IntroSeven(), TutorialOne(), TutorialTwo(), TutorialThree(), TutorialFour()]
         for i in tempScenes {
             i.scaleMode = .fill
         }
@@ -107,9 +107,65 @@ struct IntroView: View {
                     }
                 }
             }
+            
         case .seven:
             ZStack {
                 SpriteView(scene: scenes[6])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                    .frame(height: UIScreen.main.bounds.height * 1.1)
+                    .ignoresSafeArea()
+                HStack {
+                    Spacer()
+                    VStack{
+                        ArrowButtonIntro(sceneState: $currentScene, destination: .eight)
+                    }
+                }
+            }
+        case .eight:
+            ZStack {
+                SpriteView(scene: scenes[7])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                    .frame(height: UIScreen.main.bounds.height * 1.1)
+                    .ignoresSafeArea()
+                
+                HStack {
+                    Spacer()
+                    VStack{
+                        ArrowButtonIntro(sceneState: $currentScene, destination: .nine)
+                    }
+                }
+            }
+        case .nine:
+            ZStack {
+                SpriteView(scene: scenes[8])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                    .frame(height: UIScreen.main.bounds.height * 1.1)
+                    .ignoresSafeArea()
+                
+                HStack {
+                    Spacer()
+                    VStack{
+                        ArrowButtonIntro(sceneState: $currentScene, destination: .ten)
+                    }
+                }
+            }
+        case .ten:
+            ZStack {
+                SpriteView(scene: scenes[9])
+                    .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
+                    .frame(height: UIScreen.main.bounds.height * 1.1)
+                    .ignoresSafeArea()
+                
+                HStack {
+                    Spacer()
+                    VStack{
+                        ArrowButtonIntro(sceneState: $currentScene, destination: .eleven)
+                    }
+                }
+            }
+        case .eleven:
+            ZStack {
+                SpriteView(scene: scenes[10])
                     .position(CGPoint(x: Double(UIScreen.main.bounds.midX), y: Double(UIScreen.main.bounds.midY * 1.1)))
                     .frame(height: UIScreen.main.bounds.height * 1.1)
                     .ignoresSafeArea()

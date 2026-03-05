@@ -38,8 +38,8 @@ class Kitchen: SKScene {
             addChild(GameController.sheerd.kitchenWindow)
         }
         
-        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
-            GameController.sheerd.enemy.position.y = frame.midY
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE && GameController.sheerd.enemy.getState() == .ATTACKING{
+            GameController.sheerd.enemy.position.y = frame.midY + 0.05
             GameController.sheerd.enemy.position.x = frame.midX
             GameController.sheerd.enemy.zPosition = 99
             addChild(GameController.sheerd.enemy)

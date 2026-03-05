@@ -24,8 +24,8 @@ import SpriteKit
  */
 class Enemy: SKSpriteNode {
     
-    private var actualState: EnemyStates = .IDLE
-    public var actualPosition: Positions = .NONE
+    private var actualState: EnemyStates = .ATTACKING
+    public var actualPosition: Positions = .ENTRANCE
     
     private var health: Double = 3
     private var barricadeDamage: Double = 20
@@ -36,7 +36,7 @@ class Enemy: SKSpriteNode {
     private var attackDeltaTime: Double = 10
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "eyes"), color: UIColor.blue, size: CGSize(width: 0.05, height: 0.05))
+        super.init(texture: SKTexture(imageNamed: "Eyes"), color: UIColor.blue, size: CGSize(width: 100, height: 100))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -130,15 +130,15 @@ class Enemy: SKSpriteNode {
     func attack(breach: Breach) {
         let now = Date.now
         
-        if actualState == .ATTACKING && now.timeIntervalSince(attackTimer) >= attackDeltaTime {
-            attackTimer = Date.now
-            breach.applyDamage(damage: barricadeDamage)
-            print("ATAkOU")
-        }
-        if breach.getNumOfBarricade() == 0 {
-            SceneManager.shared.isPlayerAlive = false
-            SoundManager.instance.deleteSound(sound: .vento)
-        }
+//        if actualState == .ATTACKING && now.timeIntervalSince(attackTimer) >= attackDeltaTime {
+//            attackTimer = Date.now
+//            breach.applyDamage(damage: barricadeDamage)
+//            print("ATAkOU")
+//        }
+//        if breach.getNumOfBarricade() == 0 {
+//            SceneManager.shared.isPlayerAlive = false
+//            SoundManager.instance.deleteSound(sound: .vento)
+//        }
     }
     
     /// Function that applies effects to the enemy.

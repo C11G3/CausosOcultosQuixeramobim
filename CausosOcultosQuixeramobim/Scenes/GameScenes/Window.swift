@@ -34,14 +34,14 @@ class Window: SKScene {
             GameController.sheerd.window.size.width = frame.size.width
             GameController.sheerd.window.size.height = frame.size.height
             GameController.sheerd.window.alpha = 1.0
-            GameController.sheerd.window.zPosition = 98
+            GameController.sheerd.window.zPosition = 5
             
             addChild(GameController.sheerd.window)
         }
         
-        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
-            GameController.sheerd.enemy.position.y = frame.midY
-            GameController.sheerd.enemy.position.x = frame.midX
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .NONE && GameController.sheerd.enemy.getState() == .ATTACKING && wasEnemyHere == false{
+            GameController.sheerd.enemy.position.y = 0
+            GameController.sheerd.enemy.position.x = 0
             GameController.sheerd.enemy.zPosition = 99
             addChild(GameController.sheerd.enemy)
             wasEnemyHere = true

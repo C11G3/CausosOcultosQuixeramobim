@@ -22,9 +22,10 @@ class Entrance: SKScene {
         backGround.position.x = frame.midX
         backGround.position.y = frame.midY
         backGround.zPosition = -1
-                
+        
         if backGround.parent == nil {
             addChild(backGround)
+
         }
         
         if GameController.sheerd.door.parent == nil {
@@ -38,10 +39,11 @@ class Entrance: SKScene {
             addChild(GameController.sheerd.door)
         }
         
-        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .ENTRANCE {
-            GameController.sheerd.enemy.position.y = frame.midY
+        if GameController.sheerd.enemy.parent == nil && GameController.sheerd.enemy.getPosition() == .NONE && GameController.sheerd.enemy.getState() == .ATTACKING{
+            GameController.sheerd.enemy.position.y = frame.midY + 0.05
             GameController.sheerd.enemy.position.x = frame.midX
             GameController.sheerd.enemy.zPosition = 99
+            GameController.sheerd.enemy.isHidden = false
             addChild(GameController.sheerd.enemy)
             wasEnemyHere = true
         }
@@ -52,14 +54,11 @@ class Entrance: SKScene {
     
     // Check if the object is being touched
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
         if SceneManager.shared.isZoomed == true {
             GameController.sheerd.player.buildBarricade(breach: GameController.sheerd.door)
         }else {
             SceneManager.shared.isZoomed = true
         }
-        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -77,15 +76,10 @@ class Entrance: SKScene {
             GameController.sheerd.door.size.width = frame.size.width
             GameController.sheerd.door.size.height = frame.size.height
             GameController.sheerd.door.scaleBarricades(scale: 0.7)
-
         }
         
         if GameController.sheerd.enemy.actualPosition != .ENTRANCE && wasEnemyHere == true {
             GameController.sheerd.enemy.removeFromParent()
         }
-    }
-    
-    func setSize(width: Int, height: Int){
-        self.size = CGSize(width: width, height: height)
     }
 }

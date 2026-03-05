@@ -52,6 +52,8 @@
 				Managers/SoundManager.swift,
 				Models/Enums.swift,
 				Models/Fonts.swift,
+				"Resources/RubikDirt-Regular.ttf",
+				"Resources/RubikDoodleShadow-Regular.ttf",
 			);
 			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
 		};

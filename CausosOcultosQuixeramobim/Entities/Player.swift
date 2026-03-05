@@ -32,6 +32,9 @@ class Player: SKSpriteNode {
 
     var actualBarricades: Int = 3
     var maxBarricades : Double = 3
+    var barricadeCooldown: Double = 2
+    var putBarricade: Bool = false
+
     
     /// Function responsible for defining the player's position between scenes.
     func walk(position: Positions) {
@@ -48,21 +51,23 @@ class Player: SKSpriteNode {
     }
     
     /// Function responsible for adding a barricade to the breach.
-    func buildBarricade(breach: Breach){
+    func buildBarricade(breach: Breach) {
         let now = Date.now
-        if now.timeIntervalSince(barricadeTimer) >= 2 && actualBarricades > 0{
+        if now.timeIntervalSince(barricadeTimer) >= barricadeCooldown && actualBarricades > 0{
             let barricade = Barricade()
             breach.addBarricades(barricade: barricade)
             barricadeTimer = Date.now
             actualBarricades -= 1
+            putBarricade.toggle()
         }
     }
     
     private func reciveBarricada(){
         let now = Date.now
-        if now.timeIntervalSince(reloadBarricadeTimer) >= 3 && actualBarricades < 3{
+        if now.timeIntervalSince(reloadBarricadeTimer) >= 10 && actualBarricades < 3{
             actualBarricades += 1
             print("BARRICADAAAAA")
+            reloadBarricadeTimer = Date.now
         }
     }
     

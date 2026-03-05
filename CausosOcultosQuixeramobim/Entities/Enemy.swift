@@ -108,6 +108,14 @@ class Enemy: SKSpriteNode {
             return .SHELF
         case ["": "WINDOW"]:
             return .WINDOW
+        case ["": "KITCHENMONSTER"]:
+            return .KITCHEN
+        case ["": "ENTRANCEMONSTER"]:
+            return .ENTRANCE
+        case ["": "SHELFMONSTER"]:
+            return .SHELF
+        case ["": "WINDOWMONSTER"]:
+            return .WINDOW
         default:
             return .NONE
         }

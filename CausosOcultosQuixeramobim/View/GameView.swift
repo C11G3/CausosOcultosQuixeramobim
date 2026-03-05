@@ -17,6 +17,7 @@ struct GameView: View {
     @State var monsterPosition: Positions?
     @State var baitMonsterPosition : [String:String]? = ["": "NONE"]
     @State var currentHour: Int = 4
+    @State var barricadeCD: Bool = false
     var scenes: [SKScene]
     
     init() {
@@ -46,31 +47,46 @@ struct GameView: View {
                 case .NONE:
                     ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, index: 3)
                 }
+                
                 if !SceneManager.shared.isZoomed {
-                    VStack (alignment: .trailing) {
+                    if barricadeCD == true {
+                        VStack {
+                            ProgressBar(progress: 0.0)
+                                .padding(.top, UIScreen.main.bounds.height * 0.1)
+                            Spacer()
+                        }
+                    }
+                    VStack(alignment: .trailing) {
                         HourIndicator(currentTime: $currentHour)
                             .padding(.top, UIScreen.main.bounds.height * 0.1)
                             .padding(.leading, UIScreen.main.bounds.width * 0.7)
+                        BarricadeIndicator()
+                            .padding(.top, UIScreen.main.bounds.height * -0.05)
                         Spacer()
                     }
                 }
             }
-        } else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
+        }
+        
+        else if SceneManager.shared.isPlayerAlive == true && GameController.sheerd.countdownTimer <= 0 {
             VictoryView(navigator: _navigator)
                 .onAppear{
                     SoundManager.instance.deleteAllSounds()
                     SoundManager.instance.playSound(sound: .opening)
                 }
                 .ignoresSafeArea()
-        } else {
+        }
+        
+        else {
             GameOverView(navigator: _navigator)
                 .onAppear{
                     SoundManager.instance.deleteAllSounds()
                     SoundManager.instance.playSound(sound: .capeloboOrigin, volume: 0.3)
                     SoundManager.instance.playSound(sound: .opening)
-
+                    
                 }
         }
+        
         Text("")
             .onAppear() {
                 SoundManager.instance.deleteAllSounds()
@@ -96,6 +112,12 @@ struct GameView: View {
                 if SceneManager.shared.isPlayerAlive {
                     SoundManager.instance.playSound(sound: .vento, volume: 0.3)
                     SoundManager.instance.playSound(sound: .grilosAmbiente, volume: 0.005)
+                }
+            }
+            .onChange(of: GameController.sheerd.putBarricade) {
+                barricadeCD.toggle()
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
+                    barricadeCD.toggle()
                 }
             }
             .onReceive(iOSConnectivity.shared.$receivedData) { data in

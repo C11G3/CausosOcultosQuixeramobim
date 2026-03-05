@@ -25,25 +25,51 @@ struct CameraView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Spacer()
-                Button {
-                    print(scene)
-                    watchOSConnectivity.shared.sendApplicationContext(data: ["" : monsterPositoon])
-                    
-                } label: {
-                    RoundedRectangle(cornerRadius: 30)
-                        .frame(width:60, height:20)
+                HStack {
+                    Text(sceneName(name: scene))
+                        .font(.custom("RubikDirt-Regular", size: 14))
                         .foregroundStyle(.black)
-                        .padding(5)
-                        .overlay(
-                            Text("Atrair")
-                                .font(.custom("RubikDirt-Regular", size: 12))
-                        )
                     
+                    Spacer()
+                    
+                    Button {
+                        print(scene)
+                        watchOSConnectivity.shared.sendApplicationContext(data: ["" : monsterPositoon])
+                    } label: {
+                        RoundedRectangle(cornerRadius: 30)
+                            .frame(width:60, height:20)
+                            .foregroundStyle(.black)
+                            .padding(5)
+                            .overlay(
+                                Text("Atrair")
+                                    .font(.custom("RubikDirt-Regular", size: 14))
+                            )
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
-                .padding(15)
+                .padding(.horizontal, 15)
+                
+                Spacer()
             }
+        }
+    }
+    
+    func sceneName(name: String) -> String {
+        switch scene {
+        case "KITCHEN":
+            return "Cozinha"
+        case "ENTRANCE":
+            return "Entrada"
+        case "WINDOW":
+            return "Janela"
+        case "KITCHENMONSTER":
+            return "Cozinha"
+        case "ENTRANCEMONSTER":
+            return "Entrada"
+        case "WINDOWMONSTER":
+            return "Janela"
+        default:
+            return "Entrada"
         }
     }
 }

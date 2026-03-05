@@ -17,8 +17,18 @@ class SceneManager {
     
     public var isPlayerAlive: Bool = true
     
+    private var player: Player = GameController.sheerd.player
+    
     static var shared : SceneManager = {
         let instance = SceneManager()
         return instance
     }()
+    
+    func getBarricade() -> Int {
+        player.actualBarricades
+    }
+    
+    func putBarricade() -> Bool {
+        player.putBarricade
+    }
 }

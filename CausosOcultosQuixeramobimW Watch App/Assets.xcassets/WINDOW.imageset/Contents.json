@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "JANELA 2.jpg",
+      "filename" : "WINDOW.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "JANELA.jpg",
+      "filename" : "WINDOW 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "JANELA 1.jpg",
+      "filename" : "WINDOW 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

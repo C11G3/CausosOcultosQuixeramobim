@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "telaVitória.png",
+      "filename" : "telaVitória 4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "telaVitória 5.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "telaVitória 6.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -22,6 +22,9 @@ class GameController {
     var countdownTimer = 300
     var currentHour = 0
     
+    var currentBarricade: Int = 3
+    var putBarricade: Bool = false
+    
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
             print(self.countdownTimer)
@@ -58,6 +61,8 @@ class GameController {
         window.update()
         kitchenWindow.update()
         door.update()
+        currentBarricade = SceneManager.shared.getBarricade()
+        putBarricade = SceneManager.shared.putBarricade()
     }
     
     func reset(){

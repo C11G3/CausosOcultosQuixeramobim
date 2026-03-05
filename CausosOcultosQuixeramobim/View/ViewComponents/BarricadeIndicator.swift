@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Component to show the amount of barricades the player have
 struct BarricadeIndicator: View {
     var body: some View {
         HStack {

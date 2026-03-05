@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Component to see the cooldown of the barricade
+/// - Parameter progress: Var to set the progress of the circle
+/// - parameter duration: Var to set the duration of the animation
 struct ProgressBar: View {
     @State var progress: Double
     

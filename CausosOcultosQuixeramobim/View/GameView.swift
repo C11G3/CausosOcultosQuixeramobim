@@ -48,7 +48,7 @@ struct GameView: View {
                     ScenePositions(currentScene: $currentScene, destinationRight: .ENTRANCE, destinationLeft: .KITCHEN, scenes: scenes, index: 3)
                 }
                 
-                if !SceneManager.shared.isZoomed {
+//                if !SceneManager.shared.isZoomed {
                     if barricadeCD == true {
                         VStack {
                             ProgressBar(progress: 0.0)
@@ -64,7 +64,7 @@ struct GameView: View {
                             .padding(.top, UIScreen.main.bounds.height * -0.05)
                         Spacer()
                     }
-                }
+//                }
             }
         }
         

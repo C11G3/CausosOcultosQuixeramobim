@@ -29,7 +29,9 @@ struct WatchView: View {
         ._statusBarHidden()
         .onReceive(watchOSConnectivity.shared.$receivedData) { data in
             currentMonsterPosition = data as? [String : String]
-
+            WKInterfaceDevice.current()
+                .play(.click) // Haptic
+            
         }
     }
 }

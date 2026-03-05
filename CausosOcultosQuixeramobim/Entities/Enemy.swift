@@ -129,6 +129,7 @@ class Enemy: SKSpriteNode {
 //        let rand = Int.random(in: 0...99)
         let currentPosition: Positions = stringToPosition(position: baitPosition)
         self.actualPosition = currentPosition
+        actualState = .IDLE
     }
     
     /// Function that receives the breach to be attacked and performs an attack at regular intervals.
@@ -143,6 +144,7 @@ class Enemy: SKSpriteNode {
             attackTimer = Date.now
             breach.applyDamage(damage: barricadeDamage)
             print("ATAkOU")
+            SoundManager.instance.playSound(sound: .madeiraDegradando)
         }
         if breach.getNumOfBarricade() == 0 {
             SceneManager.shared.isPlayerAlive = false

@@ -54,6 +54,7 @@
 				Models/Fonts.swift,
 				"Resources/RubikDirt-Regular.ttf",
 				"Resources/RubikDoodleShadow-Regular.ttf",
+				Resources/Sounds/madeiraDegradando.mp3,
 			);
 			target = E1BCCAC52F50BA7F00BC8174 /* CausosOcultosQuixeramobimW Watch App */;
 		};

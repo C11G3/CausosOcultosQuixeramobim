@@ -123,6 +123,7 @@ struct GameView: View {
             .onReceive(iOSConnectivity.shared.$receivedData) { data in
                 baitMonsterPosition = data as? [String : String]
                 GameController.sheerd.enemy.baitPosition(baitPosition: baitMonsterPosition!)
+                SoundManager.instance.playSound(sound: .chamarCapelobo, volume: 0.01)
                 print("Recieved message: \(baitMonsterPosition ?? [ "" : "NONE"])")
             }
             .navigationBarBackButtonHidden(true)

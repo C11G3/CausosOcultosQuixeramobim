@@ -25,6 +25,8 @@ class IntroSeven: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        SceneManager.shared.currentScene = .eight
+
     }
 
     override func update(_ currentTime: TimeInterval) {

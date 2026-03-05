@@ -25,6 +25,8 @@ class IntroThree: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        SceneManager.shared.currentScene = .four
+
     }
 
     override func update(_ currentTime: TimeInterval) {

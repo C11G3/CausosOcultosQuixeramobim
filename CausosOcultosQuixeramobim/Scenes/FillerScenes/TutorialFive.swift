@@ -1,14 +1,14 @@
 //
-//  IntroFour.swift
+//  TutorialFive.swift
 //  CausosOcultosQuixeramobim
 //
-//  Created by Isabela Hissa Pinto on 03/03/26.
+//  Created by Enzo Ferroni on 05/03/26.
 //
 
 import SpriteKit
 
-class IntroFour: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "four")
+class TutorialFive: SKScene {
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "tutorialWatch1")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -25,8 +25,7 @@ class IntroFour: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        SceneManager.shared.currentScene = .five
-
+        SceneManager.shared.currentScene = .fourteen
     }
 
     override func update(_ currentTime: TimeInterval) {

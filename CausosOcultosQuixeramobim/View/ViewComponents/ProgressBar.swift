@@ -16,20 +16,30 @@ struct ProgressBar: View {
     let duration: Double = GameController.sheerd.player.barricadeCooldown
     
     var body: some View {
-        ZStack {
-            Circle()
-                .trim(from: 0.0, to: progress)
-                .stroke(
-                    Color.white,
-                    style: StrokeStyle(lineWidth: 5, lineCap: .round)
-                )
-                .rotationEffect(.degrees(-90))
-                .animation(.linear(duration: duration), value: progress)
+        ZStack {            
+            VStack{
+                HStack{
+                Circle()
+                    .trim(from: 0.0, to: progress)
+                    .stroke(
+                        Color.white,
+                        style: StrokeStyle(lineWidth: 5, lineCap: .round)
+                    )
+                    .rotationEffect(.degrees(-90))
+                    .animation(.linear(duration: duration), value: progress)
+            }
+            .frame(width: 35, height: 35)
+
+                Text("Espere a Barricada")
+                    .font(.custom("RubikDirt-Regular", size: 24))
+                    .foregroundStyle(Color.white)
+            }
         }
-        .frame(width: 35, height: 35)
         //.padding()
         .onAppear {
             progress = 1.0
+            
+            
         }
     }
 }

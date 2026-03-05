@@ -64,7 +64,7 @@ class Player: SKSpriteNode {
     
     private func reciveBarricada(){
         let now = Date.now
-        if now.timeIntervalSince(reloadBarricadeTimer) >= 10 && actualBarricades < 3{
+        if now.timeIntervalSince(reloadBarricadeTimer) >= 8 && actualBarricades < 3 {
             actualBarricades += 1
             print("BARRICADAAAAA")
             reloadBarricadeTimer = Date.now

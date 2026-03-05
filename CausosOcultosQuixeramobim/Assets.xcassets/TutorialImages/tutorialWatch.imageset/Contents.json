@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "telaHistória7 3.png",
+      "filename" : "tutorialWatch.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "telaHistória7 4.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "telaHistória7.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -65,4 +65,7 @@ enum Intro: String {
     case nine
     case ten
     case eleven
+    case twelve
+    case thirteen
+    case fourteen
 }

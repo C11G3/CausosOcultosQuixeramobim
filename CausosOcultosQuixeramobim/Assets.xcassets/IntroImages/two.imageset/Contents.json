@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "telaHistória2 2.png",
+      "filename" : "telaHistória2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "telaHistória2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

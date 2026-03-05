@@ -19,6 +19,9 @@ class SceneManager {
     
     private var player: Player = GameController.sheerd.player
     
+    public var currentScene: Intro = .one
+
+    
     static var shared : SceneManager = {
         let instance = SceneManager()
         return instance

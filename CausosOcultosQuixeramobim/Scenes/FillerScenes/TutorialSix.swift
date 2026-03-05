@@ -1,14 +1,16 @@
 //
-//  TutorialOne.swift
+//  TutorialSix.swift
 //  CausosOcultosQuixeramobim
 //
 //  Created by Enzo Ferroni on 05/03/26.
 //
 
 import SpriteKit
+import SwiftUI
 
-class TutorialOne: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "tutorial1")
+class TutorialSix: SKScene {
+    
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "tutorialWatch2")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -25,7 +27,6 @@ class TutorialOne: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        SceneManager.shared.currentScene = .ten
     }
 
     override func update(_ currentTime: TimeInterval) {

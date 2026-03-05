@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ArrowButtonIntro: View {
-    @Binding var sceneState: Intro
     var destination: Intro
     
     var body: some View {
         Button {
-            sceneState = destination
+            SceneManager.shared.currentScene = destination
         } label: {
             Image("chevronRight")
                 .resizable()

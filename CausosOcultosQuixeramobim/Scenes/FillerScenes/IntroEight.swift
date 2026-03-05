@@ -1,14 +1,14 @@
 //
-//  TutorialOne.swift
+//  IntroEight.swift
 //  CausosOcultosQuixeramobim
 //
-//  Created by Enzo Ferroni on 05/03/26.
+//  Created by Isabela Hissa Pinto on 03/03/26.
 //
 
 import SpriteKit
 
-class TutorialOne: SKScene {
-    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "tutorial1")
+class IntroEight: SKScene {
+    var backGround: SKSpriteNode = SKSpriteNode(imageNamed: "eight")
     
     override func didMove(to view: SKView) {
         backGround.size = frame.size
@@ -25,7 +25,8 @@ class TutorialOne: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        SceneManager.shared.currentScene = .ten
+        SceneManager.shared.currentScene = .nine
+
     }
 
     override func update(_ currentTime: TimeInterval) {

@@ -25,6 +25,7 @@ class TutorialThree: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        SceneManager.shared.currentScene = .twelve
     }
 
     override func update(_ currentTime: TimeInterval) {

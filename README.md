@@ -11,9 +11,12 @@ Jogo de suspense folclórico para <b>iOS + WatchOS</b> com integração entre di
 
 </div>
 
+![image](url da imagem)
+
 ---
 ## Índice
 - [Descrição](#descrição)
+- [Instrução de Instalação](#instrução-de-instalação)
 - [A História](#a-história)
 - [Instrução de Uso](#instrução-de-uso)
 - [Licença](#licença)
@@ -24,6 +27,26 @@ Jogo de suspense folclórico para <b>iOS + WatchOS</b> com integração entre di
 **Causos Ocultos: Quixeramobim** é um jogo de **suspense folclórico** com mecânicas de **sobrevivência, gerenciamento de recursos e investigação narrativa**, desenvolvido para **iOS + WatchOS** com integração entre dispositivos.
 
 O jogo combina elementos de **folclore nordestino**, suspense psicológico e mecânicas estratégicas de sobrevivência.
+
+## Instrução de Instalação
+Para instalar os packages, siga as instruções a baixo:
+
+```shell
+# Open a terminal (Command Prompt or PowerShell for Windows, Terminal for macOS or Linux)
+
+# Ensure Git is installed
+# Visit https://git-scm.com to download and install console Git if not already installed
+
+# Clone the repository
+git clone https://github.com/C11G3/CausosOcultosQuixeramobim.git
+
+# Navigate to the project directory
+cd cd CausosOcultosQuixeramobim
+
+# Compile the project
+dotnet build
+
+```
 
 ## A História 
 

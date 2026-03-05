@@ -13,11 +13,11 @@ Jogo de suspense folclórico para <b>iOS + WatchOS</b> com integração entre di
 
 ---
 
-##  Índice 📑
-- [📖 Descrição](#descrição)
-- [🌙 A História](#a-história)
-- [🎮 Instrução de Uso](#instrução-de-uso)
-- [📜 Licença](#licença)
+## Índice 📑
+- [📖 Descrição](#descricao)
+- [🌙 A História](#a-historia)
+- [🎮 Instrução de Uso](#instrucao-de-uso)
+- [📜 Licença](#licenca)
 - [👨‍💻 Autores](#autores)
 
 ---

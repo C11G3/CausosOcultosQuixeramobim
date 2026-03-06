@@ -16,7 +16,8 @@ struct ProgressBar: View {
     let duration: Double = GameController.sheerd.player.barricadeCooldown
     
     var body: some View {
-        ZStack {            
+        ZStack {
+            
             VStack{
                 HStack{
                 Circle()
@@ -35,6 +36,7 @@ struct ProgressBar: View {
                     .foregroundStyle(Color.white)
             }
         }
+        .background(Color.black.opacity(0.3))
         //.padding()
         .onAppear {
             progress = 1.0

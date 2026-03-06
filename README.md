@@ -41,11 +41,7 @@ Para instalar os packages, siga as instruções a baixo:
 git clone https://github.com/C11G3/CausosOcultosQuixeramobim.git
 
 # Navigate to the project directory
-cd cd CausosOcultosQuixeramobim
-
-# Compile the project
-dotnet build
-
+cd CausosOcultosQuixeramobim
 ```
 
 ## A História 

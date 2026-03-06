@@ -19,7 +19,7 @@ class GameController {
     var kitchenWindow = Breach(texture: SKTexture(imageNamed: "kitchenWindow"), actualPosition: .KITCHEN)
     var door = Breach(texture: SKTexture(imageNamed: "door"), actualPosition: .ENTRANCE)
     
-    var countdownTimer = 300
+    var countdownTimer = 120
     var currentHour = 2
     
     var currentBarricade: Int = 3
@@ -30,12 +30,13 @@ class GameController {
             print(self.countdownTimer)
             if self.countdownTimer > 0 {
                 self.countdownTimer -= 1
+                print(self.countdownTimer)
                 switch self.countdownTimer {
-                case 225:
+                case 100:
                     self.currentHour = 3
-                case 150:
+                case 60:
                     self.currentHour = 4
-                case 75:
+                case 30:
                     self.currentHour = 5
                 case 1:
                     self.currentHour = 6
@@ -71,7 +72,7 @@ class GameController {
         window.reset()
         kitchenWindow.reset()
         door.reset()
-        countdownTimer = 300
+        countdownTimer = 120
         currentHour = 2
         SceneManager.shared.currentScene = .one
     }

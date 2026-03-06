@@ -36,8 +36,9 @@ struct ProgressBar: View {
                     .foregroundStyle(Color.white)
             }
         }
+        .padding()
         .background(Color.black.opacity(0.3))
-        //.padding()
+        .cornerRadius(16)
         .onAppear {
             progress = 1.0
             

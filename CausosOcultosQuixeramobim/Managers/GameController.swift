@@ -73,5 +73,6 @@ class GameController {
         door.reset()
         countdownTimer = 300
         currentHour = 2
+        SceneManager.shared.currentScene = .one
     }
 }
